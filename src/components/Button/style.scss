@@ -1,0 +1,97 @@
+@import "../../variables";
+
+$btn-base-color: #3388e7;
+
+.Btn {
+    border-radius: 3px;
+    border: 2px solid transparent;
+    background: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: 0.2s all;
+    outline: none;
+
+    &_size {
+        &_m {
+            padding: 7px    30px;
+        }
+
+        &_xs {
+            padding: 3px 27px 4px 27px;
+        }
+    }
+
+    &_type {
+        &_primary {
+            background: $primary-color;
+            color: $text-base-color;
+            &:hover {
+                background-color: transparent;
+                color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+
+        &_secondary {
+            background-color: $secondary-color;
+            color: $text-base-color;
+            &:hover {
+                background-color: transparent;
+                color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+
+        &_success {
+            background-color: $success-color;
+            color: $text-base-color;
+            &:hover {
+                background-color: transparent;
+                color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+
+        &_link {
+            color: $link-color;
+            &:hover {
+                color: #00FFFB;
+            }
+        }
+
+        &_fake {
+            background: $fake-color;
+            color: $text-base-color;
+            &:hover {
+                background-color: transparent;
+                color: $secondary-color;
+                border-color: $secondary-color;
+            }
+        }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        cursor: pointer;
+    }
+
+    &:disabled,
+    &:disabled:focus,
+    &:disabled:hover,
+    &:disabled:active {
+        background-color: $disabled-color;
+        border-color: $disabled-color;
+        color: rgba(255, 255, 255, 0.3);
+        cursor: not-allowed;
+    }
+}
+
+.Btn-Label {
+    display: inline-block;
+}
+
+
+
+

@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 // const devMode = process.env.NODE_ENV !== 'production';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -18,7 +19,14 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.scss'],
         modules: ['node_modules'],
-        alias: {},
+        alias: {
+            components: path.resolve(__dirname, './src/components/'),
+            ac: path.resolve(__dirname, './src/ac/'),
+            containers: path.resolve(__dirname, './src/containers/'),
+            img: path.resolve(__dirname, './src/img/'),
+            reducers: path.resolve(__dirname, './src/reducers/'),
+            utils: path.resolve(__dirname, './src/utils/'),
+        },
     },
     devtool: 'source-map',
     optimization: {
@@ -51,7 +59,6 @@ module.exports = {
                                 options: {
                                     plugins: [
                                         require('autoprefixer')({
-                                            browsers: ['> 0%'],
                                             cascade: false,
                                         }),
                                     ],
@@ -71,6 +78,16 @@ module.exports = {
                                     localIdentName: '[local]_[hash:base64:15]',
                                 },
                             },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    plugins: [
+                                        autoprefixer({
+                                            cascade: false,
+                                        }),
+                                    ],
+                                },
+                            },
                             'sass-loader',
                         ],
                     },
@@ -88,7 +105,7 @@ module.exports = {
                     },
                 ],
                 include: [
-                    path.resolve(__dirname, 'client/fonts'),
+                    path.resolve(__dirname, 'src/fonts'),
                 ],
             },
             {
@@ -103,7 +120,7 @@ module.exports = {
                         },
                     },
                 ],
-                include: [path.resolve(__dirname, 'client/components/Icon')],
+                include: [path.resolve(__dirname, 'src/components/Icon')],
             },
             {
                 // DATA IMAGES

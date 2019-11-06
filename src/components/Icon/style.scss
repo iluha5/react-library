@@ -1,0 +1,84 @@
+.Icon {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  -webkit-font-smoothing: antialiased;
+
+  &_Size_xs {
+    width: 10px;
+    height: 10px;
+  }
+
+  &_Size_s {
+    width: 20px;
+    height: 20px;
+  }
+
+  &_Size_sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  &_Size_m {
+    width: 35px;
+    height: 35px;
+  }
+
+  &_Size_l {
+    width: 40px;
+    height: 40px;
+  }
+
+  &_Size_xl {
+      width: 55px;
+      height: 55px;
+  }
+
+  &_Size_xxl {
+      width: 68px;
+      height: 68px;
+  }
+
+  &#{&}_color_dark {
+    color: #555555;
+  }
+
+  &#{&}_color_error {
+    color: #DA7163;
+  }
+
+  &#{&}_color_accent {
+    color: #3388E7;
+  }
+
+  &#{&}_color_default {
+    color: #555555;
+  }
+
+  &#{&}_color_darkgrey {
+    color: rgba(1, 1, 1, .54);
+  }
+
+  &#{&}_color_grey {
+    color: #A3A5A6;
+  }
+
+  &#{&}_color_white {
+    color: #FFFFFF;
+  }
+
+  &#{&}_color_chat {
+    color: #7599B3;
+  }
+
+  &#{&}_color_lightgreen {
+    color: #00D0CD;
+  }
+
+  &#{&}_interactive {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

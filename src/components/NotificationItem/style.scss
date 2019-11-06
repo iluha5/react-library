@@ -1,0 +1,81 @@
+.NotificationItem {
+    margin-top: 5px ;
+
+    display: inline-block;
+
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background: #455673;
+
+    transform: translate(120%);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &_Show {
+        animation: second .3s forwards;
+        animation-iteration-count: 1;
+        animation-delay: 0s;
+
+        @keyframes second {
+            0% {
+                transform: translate(120%);
+            }
+            100% {
+                transform: translate(0%);
+            }
+        }
+    }
+
+    &_Hide {
+        animation: hideItem .3s forwards;
+        animation-iteration-count: 1;
+        animation-delay: 0s;
+
+        @keyframes hideItem {
+            0% {
+                transform: translate(0%);
+            }
+            100% {
+                transform: translate(120%);
+            }
+        }
+    }
+
+
+    &_Type_Error {
+        background: #455673 linear-gradient(90.75deg, rgba(218, 113, 99, 0.3) 1.75%, rgba(218, 113, 99, 0) 101.32%);
+    }
+
+    &_Type_Passing {
+        background: #455673 linear-gradient(90.84deg, rgba(51, 185, 189, 0.4) 1.88%, rgba(51, 185, 189, 0) 108.07%);
+    }
+
+    &_Type_Achievement {
+        background: #455673 linear-gradient(90.84deg, rgba(51, 185, 189, 0.4) 1.88%, rgba(51, 185, 189, 0) 108.07%);
+
+        & .NotificationItem-Content {
+            margin: 6px 35px 6px 13px;
+        }
+    }
+
+}
+
+.NotificationItem-Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 7px 34px;
+}
+
+.NotificationItem-Image {
+    width: 60px;
+    height: 60px;
+}
+
+.NotificationItem-Text {
+    line-height: 19px;
+    margin: 10px 0 10px 16px;
+}
