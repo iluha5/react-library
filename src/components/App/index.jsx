@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from './style.scss';
+
 import Button from 'components/Button';
 
-function App({ showNotification }) {
+function App({ buttonClick }) {
     return (
-        <>
-            <div>Hi world!</div>
+        <div className={style['App']}>
             <Button
-                onClick={showNotification}
+                onClick={buttonClick}
             >Show notification</Button>
-        </>
+        </div>
     );
 }
 
 App.propTypes = {
-    showNotification: PropTypes.func.isRequired,
+    buttonClick: PropTypes.func.isRequired,
 };
 
 export default App;

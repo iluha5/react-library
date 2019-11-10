@@ -127,14 +127,7 @@ class NotificationContainer extends React.Component {
                 key={renderID}
                 type={NotificationContainer._getItemType(rendering[renderID].type)}
                 image={rendering[renderID]['image']}
-                text={
-                    // rendering[renderID].type === ACHIEVEMENT
-                    // || rendering[renderID].type === NOTIFICATION_ERROR
-                    // || rendering[renderID].type === PASSED ?
-                    rendering[renderID].title
-                    // :
-                    // this._getMessage(rendering[renderID].type)
-                }
+                text={rendering[renderID].title}
                 onClose={this._handleCloseNotification(renderID)}
             />
         );
