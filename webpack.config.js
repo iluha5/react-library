@@ -25,6 +25,7 @@ module.exports = {
             containers: path.resolve(__dirname, './src/containers/'),
             img: path.resolve(__dirname, './src/img/'),
             reducers: path.resolve(__dirname, './src/reducers/'),
+            store: path.resolve(__dirname, './src/store/'),
             utils: path.resolve(__dirname, './src/utils/'),
         },
     },

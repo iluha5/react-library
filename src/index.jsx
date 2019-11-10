@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider} from 'react-redux';
 
-import store from './store/index';
+import { store } from './store/index';
 import AppContainer from 'containers/App';
 
 import './global-styles.scss?raw';

@@ -27,15 +27,15 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-    className: PropTypes.any,
-    btnType: PropTypes.oneOf(['primary', 'secondary', 'success', 'link', 'fake']),
-    size: PropTypes.string,
-    disabled: PropTypes.bool,
+    className: PropTypes.string,
+    btnType: PropTypes.oneOf(['primary', 'secondary', 'success', 'link', 'fake']).isRequired,
+    size: PropTypes.oneOf(['m', 's']).isRequired,
+    disabled: PropTypes.bool.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object,
     ]),
-    onClick: PropTypes.any,
+    onClick: PropTypes.func,
 };
 
 export default Button;
