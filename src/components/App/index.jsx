@@ -1,16 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
+import { TIME_OVER, TEN_SECONDS_LEFT } from 'utils/constants';
 import style from './style.scss';
 
 import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
+import TimerContainer from 'containers/Timer';
 
-function App({ handlerButtonClick, triggerBox1, isBox1Checked }) {
+function App({
+    handlerButtonClick,
+    triggerBox1,
+    isBox1Checked,
+    timeLeft,
+    handlerTime,
+    handlerTimeButtonClick,
+    timerID,
+}) {
     return (
         <div className={style['App']}>
             <h2 className={style['App-Title']}>
-                Buttons.
+                Buttons and Notifications.
             </h2>
             <h3 className={style['App-SubTitle']}>
                 Try to click them.
@@ -78,6 +89,33 @@ function App({ handlerButtonClick, triggerBox1, isBox1Checked }) {
                     </Button>
                 </div>
             </div>
+            <h2 className={style['App-Title']}>
+                WebWorker timer.
+            </h2>
+            <h3 className={style['App-SubTitle']}>
+                Try it!
+            </h3>
+            <div className={style['App-Line']}>
+                <div className={cn(style['App-Item'], style['App-TimerWrapper'])}>
+                    <TimerContainer
+                        key={timerID}
+                        timeLeft={timeLeft}
+                        onTimeOver={handlerTime(TIME_OVER)}
+                        trigger={{
+                            time: 10,
+                            callback: handlerTime(TEN_SECONDS_LEFT),
+                        }}
+                    />
+                </div>
+                <div className={style['App-Item']}>
+                    <Button
+                        onClick={handlerTimeButtonClick}
+                        disabled={timeLeft !== 0}
+                    >
+                        Take 15 sec
+                    </Button>
+                </div>
+            </div>
         </div>
     );
 }
@@ -86,6 +124,10 @@ App.propTypes = {
     handlerButtonClick: PropTypes.func.isRequired,
     triggerBox1: PropTypes.func.isRequired,
     isBox1Checked: PropTypes.bool.isRequired,
+    timeLeft: PropTypes.number.isRequired,
+    handlerTime: PropTypes.func.isRequired,
+    handlerTimeButtonClick: PropTypes.func.isRequired,
+    timerID: PropTypes.number.isRequired,
 };
 
 export default App;

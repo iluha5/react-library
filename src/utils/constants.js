@@ -1,5 +1,7 @@
 export const NOTIFICATION_ERROR = 'NOTIFICATION_ERROR';
 export const NOTIFICATION_PASSED = 'NOTIFICATION_PASSED';
+export const TIME_OVER = 'TIME_OVER';
+export const TEN_SECONDS_LEFT = 'TEN_SECONDS_LEFT';
 
 // Regex
 // export const REGEX_PASSWORD = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,32}$/; // eslint-disable-line

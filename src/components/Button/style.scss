@@ -81,9 +81,9 @@ $btn-base-color: #3388e7;
     &:disabled:focus,
     &:disabled:hover,
     &:disabled:active {
-        background-color: $disabled-color;
-        border-color: $disabled-color;
-        color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(0, 0, 0, 0.12);
+        border-color: transparent;
+        color: rgba(0, 0, 0, 0.26);
         cursor: not-allowed;
     }
 }
