@@ -77,14 +77,14 @@ class NotificationItem extends React.Component {
             case 'Error':
                 return (
                     <Icon
-                        name={'mistakes'}
+                        name={'mistakes-white'}
                         size={'xl'}
                     />
                 );
             case 'Passing':
                 return (
                     <Icon
-                        name={'completed'}
+                        name={'completed-white'}
                         size={'xl'}
                     />
                 );
@@ -127,7 +127,7 @@ class NotificationItem extends React.Component {
 }
 
 NotificationItem.propTypes = {
-    type: PropTypes.oneOf(['Error', 'Passing', 'Achievement']),
+    type: PropTypes.oneOf(['Error', 'Passing']),
     link: PropTypes.string,
     image: PropTypes.string,
     text: PropTypes.string.isRequired,
