@@ -1,0 +1,76 @@
+@import '../../variables';
+
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(35, 47, 68, 0.7);
+    text-align: center;
+
+    overflow-y: auto;
+
+    z-index: 1000;
+
+    &_WithoutSizes {
+        .Modal-Container {
+            padding: 0;
+
+            min-width: auto;
+            max-width: none;
+        }
+
+        .Modal-Content {
+            padding: 0;
+
+            white-space: normal;
+        }
+    }
+}
+
+.Modal-Container {
+    position: relative;
+
+    display: block;
+
+    min-width: 460px;
+    max-width: 900px;
+    padding: 40px 45px 40px 47px;
+
+    background: $bg-secondColor;
+    border-radius: 3px;
+}
+
+.Modal-Header {
+    height: 30px;
+
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.Modal-Content {
+    margin-top: 10px;
+    padding: 6px 8px;
+
+    color: $text-base-color;
+    white-space: pre-wrap;
+}
+
+.Modal-Close {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+
+    padding: 5px;
+
+    display: flex;
+
+    background-color: $bg-secondColor;
+}

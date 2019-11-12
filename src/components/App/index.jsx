@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { TIME_OVER, TEN_SECONDS_LEFT } from 'utils/constants';
+import {TIME_OVER, TEN_SECONDS_LEFT} from 'utils/constants';
 import style from './style.scss';
 
 import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
 import TimerContainer from 'containers/Timer';
+import Modal from 'components/Modal';
 
 function App({
     handlerButtonClick,
@@ -15,9 +16,16 @@ function App({
     isBox1Checked,
     timeLeft,
     handlerTime,
-    handlerTimeButtonClick,
+    triggerCheckboxButtonClick,
     timerID,
+    isCheckboxModalOpen,
+    handlerTimeButtonClick,
 }) {
+    const checkboxModalData = {
+        header: 'Important message',
+        content: 'I\'m popup message. Try to close me with mouse or keyboard. Bye!',
+    };
+
     return (
         <div className={style['App']}>
             <h2 className={style['App-Title']}>
@@ -68,7 +76,7 @@ function App({
                 </div>
             </div>
             <h2 className={style['App-Title']}>
-                Checkbox.
+                Custom Checkboxes and Popups.
             </h2>
             <h3 className={style['App-SubTitle']}>
                 Try it!
@@ -82,10 +90,10 @@ function App({
                 </div>
                 <div className={style['App-Item']}>
                     <Button
-                        onClick={handlerButtonClick('Checkbox', true)}
+                        onClick={triggerCheckboxButtonClick}
                         disabled={!isBox1Checked}
                     >
-                        Click me
+                        Open popup
                     </Button>
                 </div>
             </div>
@@ -93,7 +101,7 @@ function App({
                 WebWorker timer.
             </h2>
             <h3 className={style['App-SubTitle']}>
-                Try it!
+                Wait a minute.
             </h3>
             <div className={style['App-Line']}>
                 <div className={cn(style['App-Item'], style['App-TimerWrapper'])}>
@@ -116,6 +124,15 @@ function App({
                     </Button>
                 </div>
             </div>
+
+            {isCheckboxModalOpen &&
+                <Modal
+                    header={checkboxModalData.header}
+                    content={checkboxModalData.content}
+                    handleClose={triggerCheckboxButtonClick}
+                    isLoader
+                />
+            }
         </div>
     );
 }
@@ -124,9 +141,11 @@ App.propTypes = {
     handlerButtonClick: PropTypes.func.isRequired,
     triggerBox1: PropTypes.func.isRequired,
     isBox1Checked: PropTypes.bool.isRequired,
+    isCheckboxModalOpen: PropTypes.bool.isRequired,
     timeLeft: PropTypes.number.isRequired,
     handlerTime: PropTypes.func.isRequired,
     handlerTimeButtonClick: PropTypes.func.isRequired,
+    triggerCheckboxButtonClick: PropTypes.func.isRequired,
     timerID: PropTypes.number.isRequired,
 };
 

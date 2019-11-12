@@ -8,7 +8,7 @@ class Portal extends React.Component {
         super(props);
 
         this._el = document.createElement('div');
-        this._root = document.getElementById('root');
+        this._root = document.getElementById('portal');
     }
 
     componentDidMount() {

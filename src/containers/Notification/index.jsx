@@ -60,28 +60,6 @@ class NotificationContainer extends React.Component {
         }
     }
 
-    // /**
-    //  * Get text for rendering from notification type
-    //  * @param type
-    //  * @returns {string}
-    //  * @private
-    //  */
-    // _getMessage(type) {
-    //     const { content } = this.context.sh.appContent.appPages.notifications;
-    //
-    //     switch (type) {
-    //         case ACHIEVEMENT:
-    //             return content.newAchievement;
-    //         case LAB_STOP_ERROR:
-    //             return content.stopLabError;
-    //         case LAB_START_ERROR:
-    //             return content.startLabError;
-    //         default:
-    //             return '';
-    //     }
-    //
-    // }
-
     /**
      * Get type for NotificationItem from notification type
      * @param type

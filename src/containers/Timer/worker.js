@@ -36,10 +36,12 @@ export default () => {
 
                     interval = setInterval(_reduceTime, 1000);
                 }
+
                 break;
             case 'stop':
                 clearInterval(interval);
                 fading = false;
+
                 break;
             case 'update':
                 if (fading){
@@ -49,6 +51,9 @@ export default () => {
 
                     interval = setInterval(_reduceTime, 1000);
                 }
+
+                break;
+            default:
                 break;
         }
     }, false);
