@@ -3,7 +3,13 @@ import React from 'react';
 import App from 'components/App';
 import NotificationContainer from 'containers/Notification';
 import { showNotification } from 'utils/utils';
-import { NOTIFICATION_ERROR, NOTIFICATION_PASSED, TIME_OVER, TEN_SECONDS_LEFT } from 'utils/constants';
+import {
+    REGEX_EMAIL,
+    NOTIFICATION_ERROR,
+    NOTIFICATION_PASSED,
+    TIME_OVER,
+    TEN_SECONDS_LEFT,
+} from 'utils/constants';
 
 
 class AppContainer extends React.Component {
@@ -12,6 +18,8 @@ class AppContainer extends React.Component {
         isCheckboxModalOpen: false,
         timeLeft: 60,
         timerID: 0,
+        isEmailErrors: false,
+        email: '',
     };
 
     /**
@@ -87,10 +95,22 @@ class AppContainer extends React.Component {
         });
     };
 
-    render() {
-        const { isBox1Checked, timeLeft, timerID, isCheckboxModalOpen } = this.state;
+        /**
+         * Validate email field and set state
+         * @param e
+         * @private
+         */
+        _handlerEmailChange = (e) => {
+            this.setState({
+                email: e.target.value,
+                isEmailErrors: !REGEX_EMAIL.test(e.target.value.trim().toLowerCase()),
+            });
+        };
 
-        return (
+        render() {
+            const { isBox1Checked, timeLeft, timerID, isCheckboxModalOpen, isEmailErrors } = this.state;
+
+            return (
             <>
                 <App
                     handlerButtonClick={this._handlerButtonClick}
@@ -102,11 +122,13 @@ class AppContainer extends React.Component {
                     handlerTimeButtonClick={this._handlerTimerButton}
                     timerID={timerID}
                     isCheckboxModalOpen={isCheckboxModalOpen}
+                    onEmailChange={this._handlerEmailChange}
+                    isEmailErrors={isEmailErrors}
                 />
                 <NotificationContainer/>
             </>
-        );
-    }
+            );
+        }
 }
 
 AppContainer.propTypes = {

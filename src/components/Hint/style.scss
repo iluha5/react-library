@@ -1,0 +1,26 @@
+@import "../../variables";
+
+.Hint {
+    min-width: 250px;
+    overflow: hidden;
+
+    text-align: left;
+
+    z-index: $zindex-third-level;
+}
+
+.Hint-Header {
+    padding: 10px 21px 12px 21px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+
+    background: linear-gradient(91.17deg, rgba(218, 113, 99, 0.3) 1.75%, rgba(218, 113, 99, 0) 101.32%);
+}
+
+.Hint-Content {
+    padding: 10px 21px 12px 21px;
+
+    color: $text-second-color;
+}

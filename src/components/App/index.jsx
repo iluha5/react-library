@@ -9,6 +9,8 @@ import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
 import TimerContainer from 'containers/Timer';
 import Modal from 'components/Modal';
+import Input from 'components/Input';
+import Icon from 'components/Icon';
 
 function App({
     handlerButtonClick,
@@ -20,6 +22,8 @@ function App({
     timerID,
     isCheckboxModalOpen,
     handlerTimeButtonClick,
+    isEmailErrors,
+    onEmailChange,
 }) {
     const checkboxModalData = {
         header: 'Important message',
@@ -98,6 +102,46 @@ function App({
                 </div>
             </div>
             <h2 className={style['App-Title']}>
+                Custom Input with animated hints.
+            </h2>
+            <h3 className={style['App-SubTitle']}>
+                Input some email.
+            </h3>
+            <div className={style['App-Line']}>
+                <div className={cn(style['App-Item'], style['App-EmailWrapper'])}>
+                    <Input
+                        error={isEmailErrors}
+                        className={style['App-EmailInput']}
+                        type='email'
+                        name='email'
+                        placeholder='Type an email'
+                        onChange={onEmailChange}
+                        InputProps={isEmailErrors  ? {
+                            endAdornment: (
+                                <Icon
+                                    name={'warning'}
+                                    size={'m'}
+                                />
+                            ),
+                        } : null}
+
+                        renderModalHint={isEmailErrors}
+                        modalHintData={{
+                            header: 'Enter an email',
+                            content: 'Please, enter a valid email',
+                        }}
+                    />
+                </div>
+                {/*<div className={style['App-Item']}>*/}
+                {/*<Button*/}
+                {/*onClick={handlerTimeButtonClick}*/}
+                {/*disabled={timeLeft !== 0}*/}
+                {/*>*/}
+                {/*Take 15 sec*/}
+                {/*</Button>*/}
+                {/*</div>*/}
+            </div>
+            <h2 className={style['App-Title']}>
                 WebWorker timer.
             </h2>
             <h3 className={style['App-SubTitle']}>
@@ -130,7 +174,6 @@ function App({
                     header={checkboxModalData.header}
                     content={checkboxModalData.content}
                     handleClose={triggerCheckboxButtonClick}
-                    isLoader
                 />
             }
         </div>
@@ -142,8 +185,10 @@ App.propTypes = {
     triggerBox1: PropTypes.func.isRequired,
     isBox1Checked: PropTypes.bool.isRequired,
     isCheckboxModalOpen: PropTypes.bool.isRequired,
+    isEmailErrors: PropTypes.bool.isRequired,
     timeLeft: PropTypes.number.isRequired,
     handlerTime: PropTypes.func.isRequired,
+    onEmailChange: PropTypes.func.isRequired,
     handlerTimeButtonClick: PropTypes.func.isRequired,
     triggerCheckboxButtonClick: PropTypes.func.isRequired,
     timerID: PropTypes.number.isRequired,

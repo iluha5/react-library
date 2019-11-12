@@ -1,0 +1,36 @@
+.Input {
+    position: relative;
+
+    z-index: 1;
+}
+
+.Input-ModalHint {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 13px);
+}
+
+.Input-TextField {
+    & input {
+        color: rgb(33, 37, 41);
+        height: 14px;
+        font-size: 14px;
+        font-family: 'OpenSans';
+        font-weight: 300;
+
+        &:disabled {
+            color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            background-color: #4D5E79;
+        }
+    }
+
+    &_size {
+        &_m {
+            & input {
+                padding: 14px 27px 14px 27px;
+            }
+        }
+    }
+}
+
