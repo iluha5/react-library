@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import style from './style.scss';
-// import Paper from 'components/Paper';
+import Paper from 'components/Paper';
 import withAnimation from 'containers/WithAnimation';
 
 function Hint({ header, content, className }){
     return (
-        <div
+        <Paper
             className={cn(
                 style['Hint'],
                 className
             )}
-            // background={'#4D5E79'}
+            background={'rgb(247, 247, 249)'}
         >
             {header &&
                 <div className={style['Hint-Header']}>
@@ -25,7 +25,7 @@ function Hint({ header, content, className }){
                     {content}
                 </div>
             }
-        </div>
+        </Paper>
     );
 }
 

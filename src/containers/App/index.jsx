@@ -2,7 +2,7 @@ import React from 'react';
 
 import App from 'components/App';
 import NotificationContainer from 'containers/Notification';
-import { showNotification } from 'utils/utils';
+import {showNotification} from 'utils/utils';
 import {
     REGEX_EMAIL,
     NOTIFICATION_ERROR,
@@ -13,21 +13,27 @@ import {
 
 
 class AppContainer extends React.Component {
-    state = {
-        isBox1Checked: false,
-        isCheckboxModalOpen: false,
-        timeLeft: 60,
-        timerID: 0,
-        isEmailErrors: false,
-        email: '',
-    };
+    constructor(props) {
+        super(props);
+
+        this._wait = false;
+
+        this.state = {
+            isBox1Checked: false,
+            isCheckboxModalOpen: false,
+            timeLeft: 0,
+            timerID: 0,
+            isEmailErrors: false,
+            email: '',
+        };
+    }
 
     /**
      * Trigger checkbox state
      * @private
      */
     _triggerBox1 = () => {
-        const { isBox1Checked } = this.state;
+        const {isBox1Checked} = this.state;
 
         this.setState({
             isBox1Checked: !isBox1Checked,
@@ -53,7 +59,7 @@ class AppContainer extends React.Component {
      * @private
      */
     _triggerCheckboxButtonClick = () => {
-        const { isCheckboxModalOpen } = this.state;
+        const {isCheckboxModalOpen} = this.state;
 
         this.setState({
             isCheckboxModalOpen: !isCheckboxModalOpen,
@@ -67,20 +73,25 @@ class AppContainer extends React.Component {
      * @private
      */
     _handlerTime = (type) => () => {
-        switch (type) {
-            case TIME_OVER:
-                this.setState({
-                    timeLeft: 0,
-                }, () => showNotification(NOTIFICATION_ERROR, 'Time is over'));
+        if (!this._wait)
+            switch (type) {
+                case TIME_OVER:
+                    this.setState({
+                        timeLeft: 0,
+                    }, () => showNotification(NOTIFICATION_ERROR, 'Time is over'));
+                    this._wait = true;
+                    setTimeout(() => this._wait = false, 1000);
 
-                break;
-            case TEN_SECONDS_LEFT:
-                showNotification(NOTIFICATION_PASSED, 'Ten seconds left!');
+                    break;
+                case TEN_SECONDS_LEFT:
+                    showNotification(NOTIFICATION_PASSED, 'Ten seconds left!');
+                    this._wait = true;
+                    setTimeout(() => this._wait = false, 1000);
 
-                break;
-            default:
-                break;
-        }
+                    break;
+                default:
+                    break;
+            }
     };
 
     /**
@@ -95,26 +106,26 @@ class AppContainer extends React.Component {
         });
     };
 
-        /**
-         * Validate email field and set state
-         * @param e
-         * @private
-         */
-        _handlerEmailChange = (e) => {
-            this.setState({
-                email: e.target.value,
-                isEmailErrors: !REGEX_EMAIL.test(e.target.value.trim().toLowerCase()),
-            });
-        };
+    /**
+     * Validate email field and set state
+     * @param e
+     * @private
+     */
+    _handlerEmailChange = (e) => {
+        this.setState({
+            email: e.target.value,
+            isEmailErrors: !REGEX_EMAIL.test(e.target.value.trim().toLowerCase()),
+        });
+    };
 
-        render() {
-            const { isBox1Checked, timeLeft, timerID, isCheckboxModalOpen, isEmailErrors } = this.state;
+    render() {
+        const {isBox1Checked, timeLeft, timerID, isCheckboxModalOpen, isEmailErrors} = this.state;
 
-            return (
+        return (
             <>
                 <App
                     handlerButtonClick={this._handlerButtonClick}
-                    triggerCheckboxButtonClick ={this._triggerCheckboxButtonClick }
+                    triggerCheckboxButtonClick={this._triggerCheckboxButtonClick}
                     triggerBox1={this._triggerBox1}
                     isBox1Checked={isBox1Checked}
                     timeLeft={timeLeft}
@@ -127,11 +138,10 @@ class AppContainer extends React.Component {
                 />
                 <NotificationContainer/>
             </>
-            );
-        }
+        );
+    }
 }
 
-AppContainer.propTypes = {
-};
+AppContainer.propTypes = {};
 
 export default AppContainer;

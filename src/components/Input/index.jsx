@@ -24,8 +24,7 @@ const styles = () => {
             },
         },
         notchedOutline: {
-            borderWidth: '2px',
-            // borderColor: 'rgba(238, 238, 238, 0.4) !important',
+            borderWidth: '1px',
             borderColor: 'rgb(33, 37, 41) !important',
         },
         error: {

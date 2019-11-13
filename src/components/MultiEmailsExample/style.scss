@@ -1,0 +1,192 @@
+@import "../../variables";
+
+.ManagerUsersPage-Table {
+  margin-top: 16px;
+}
+
+.ManagerUsersPage-Controls {
+  display: flex;
+  margin-top: 20px;
+}
+
+.ManagerUsersPage-Control {
+  & + & {
+    margin-left: 10px;
+  }
+}
+
+.ManagerUsersPage-IconLeft {
+  margin-left: 7px;
+}
+
+.ManagerUsersPage-IconRight {
+  margin-right: 7px;
+}
+
+.ManagerUsersPage-Invite {
+    font-size: 10px;
+    line-height: 14px;
+
+    cursor: pointer;
+}
+
+.ManagerUsersPage-AddUsersHeader {
+    margin-top: 56px;
+}
+
+.ManagerUsersPage-AddUsersSubHeader {
+    margin-top: 18px;
+
+    color: $text-second-color;
+}
+
+.ManagerUsersPage-AddUsersLegend {
+    margin-top: 20px;
+}
+
+.ManagerUsersPage-AddUsersLegendItem {
+    position: relative;
+    padding-left: 25px;
+    color: $text-second-color;
+
+    &:first-child {
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 2px;
+
+            display: block;
+            width: 17px;
+            height: 17px;
+
+            background: #d32f2f;
+            border-radius: 3px;
+
+            content: '';
+        }
+    }
+
+    &:last-child {
+        margin-left: 14px;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 2px;
+
+            display: block;
+            width: 17px;
+            height: 17px;
+
+            background: #00796b;
+            border-radius: 3px;
+
+            content: '';
+        }
+    }
+}
+
+.AddUserForm {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: 1022px;
+    margin: 18px 33px 0 33px;
+}
+
+.AddUserForm-InputWrapper {
+    width: 856px;
+    min-height: 69px;
+}
+
+.AddUserForm-Input {
+    & + & {
+        margin-top: 27px;
+    }
+}
+
+.AddUserForm-Control {
+    margin-top: 27px;
+    margin-bottom: 56px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.AddUserForm-Button {
+    & + & {
+        margin-left: 14px;
+    }
+}
+
+.AddUserForm-UsersAmount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 90px;
+
+    margin-left: 8px;
+    padding: 7px 7px 7px 7px;
+
+    background: none;
+    border-radius: 3px;
+    border: 1px solid rgba(238, 238, 238, 0.4);
+
+    font-size: 21px;
+    line-height: 29px;
+    color: #ffffff;
+}
+
+.AddUserForm-EmailLabel {
+    background-color: unset;
+    border: 1px solid rgba(238, 238, 238, 0.4) !important;
+
+    &_Color {
+        &_Red {
+            background-color: #d32f2f;
+            border: 0 solid transparent !important;
+        }
+        &_Green {
+            background-color: #00796b;
+            border: 0 solid transparent !important;
+        }
+    }
+}
+
+.AddUserForm-EmailLabelText {
+    max-width: 800px;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.ManagerUsersPage-Item_activeCourse {
+    flex: 0 0 405px;
+}
+
+.ManagerUsersPage-Item_email {
+    flex: 0 0 285px;
+}
+.ManagerUsersPage-Item_name {
+    flex: 0 0 362px;
+}
+
+.DeletedUsersTitle {
+    max-width: 380px;
+}
+
+.DeletedUsersContent {
+    max-width: 320px;
+    margin: 0 auto;
+
+    &-Title {
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 18px;
+    }
+
+    &-Controls {
+        display: flex;
+        justify-content: space-between;
+        margin: 18px 26px 0;
+    }
+}

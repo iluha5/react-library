@@ -11,6 +11,7 @@ import TimerContainer from 'containers/Timer';
 import Modal from 'components/Modal';
 import Input from 'components/Input';
 import Icon from 'components/Icon';
+import MultiEmailsExample from 'components/MultiEmailsExample';
 
 function App({
     handlerButtonClick,
@@ -102,7 +103,7 @@ function App({
                 </div>
             </div>
             <h2 className={style['App-Title']}>
-                Custom Input with animated hints.
+                Custom Input with Animated Hints.
             </h2>
             <h3 className={style['App-SubTitle']}>
                 Input some email.
@@ -116,7 +117,7 @@ function App({
                         name='email'
                         placeholder='Type an email'
                         onChange={onEmailChange}
-                        InputProps={isEmailErrors  ? {
+                        InputProps={isEmailErrors ? {
                             endAdornment: (
                                 <Icon
                                     name={'warning'}
@@ -132,27 +133,20 @@ function App({
                         }}
                     />
                 </div>
-                {/*<div className={style['App-Item']}>*/}
-                {/*<Button*/}
-                {/*onClick={handlerTimeButtonClick}*/}
-                {/*disabled={timeLeft !== 0}*/}
-                {/*>*/}
-                {/*Take 15 sec*/}
-                {/*</Button>*/}
-                {/*</div>*/}
             </div>
             <h2 className={style['App-Title']}>
-                WebWorker timer.
+                WebWorker Timer.
             </h2>
             <h3 className={style['App-SubTitle']}>
-                Wait a minute.
+                Click to start the timer.
             </h3>
             <div className={style['App-Line']}>
                 <div className={cn(style['App-Item'], style['App-TimerWrapper'])}>
                     <TimerContainer
                         key={timerID}
                         timeLeft={timeLeft}
-                        onTimeOver={handlerTime(TIME_OVER)}
+                        onTimeOver={timeLeft !== 0 ? handlerTime(TIME_OVER) : () => {
+                        }}
                         trigger={{
                             time: 10,
                             callback: handlerTime(TEN_SECONDS_LEFT),
@@ -168,13 +162,24 @@ function App({
                     </Button>
                 </div>
             </div>
+            <h2 className={style['App-Title']}>
+                Multiple Emails Input.
+            </h2>
+            <h3 className={style['App-SubTitle']}>
+                Open the input.
+            </h3>
+            <div className={style['App-Line']}>
+                <div className={cn(style['App-Item'], style['App-MultiEmailsWrapper'])}>
+                    <MultiEmailsExample/>
+                </div>
+            </div>
 
             {isCheckboxModalOpen &&
-                <Modal
-                    header={checkboxModalData.header}
-                    content={checkboxModalData.content}
-                    handleClose={triggerCheckboxButtonClick}
-                />
+            <Modal
+                header={checkboxModalData.header}
+                content={checkboxModalData.content}
+                handleClose={triggerCheckboxButtonClick}
+            />
             }
         </div>
     );
