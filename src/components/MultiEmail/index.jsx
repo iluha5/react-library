@@ -1,5 +1,5 @@
 import React from 'react';
-import isEmailFn from './isEmail';
+import { isEmailFn } from 'utils/utils';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
