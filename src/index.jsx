@@ -6,6 +6,8 @@ import { Provider} from 'react-redux';
 import { store } from './store/index';
 import AppContainer from 'containers/App';
 
+ import fonts from './fonts.scss'; // eslint-disable-line
+
 import './global-styles.scss?raw';
 
 
