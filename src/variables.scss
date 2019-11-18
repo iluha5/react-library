@@ -1,19 +1,23 @@
+$base-color: #FFF;
 $text-base-color: #FFF;
 $text-second-color: rgba(255, 255, 255, 0.7);
 $text-third-color: rgba(255, 255, 255, 0.5);
+$text-fourth-color: rgba(255, 255, 255, 0.3);
 
 // Color
-$base-color: #FFF;
 $primary-color: #33B0B3;
 $secondary-color: #7A9DC4;
 $success-color: #317FB9;
 $fake-color: #5D7092;
+$error-color: #DA7163;
 $disabled-color: #3D4D68;
 $link-color: #00D0CD;
 $link-hoverColor: #00FFFB;
+$active-borderColor: rgba(0, 208, 205, 0.5);
+;
 
 $bg-brandColor: #35445D;
-$bg-secondColor: #317FB9;
+$bg-secondColor: #455673;
 
 $bg-activeColor: #4D5E79;
 $bg-accentColor: #566781;
@@ -27,5 +31,9 @@ $font-weight-base: 300;
 $boxShadow: rgba(0, 0, 0, 0.15);
 
 //z-index
+$zindex-first-level: 1;
 $zindex-third-level: 9;
 $zindex-notifications: 10000;
+
+//tests
+$timer_fixed_top: 7px;

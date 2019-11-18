@@ -1,171 +1,109 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
 
 import style from './style.scss';
 
 import Hint from 'components/Hint';
 
-const styles = () => {
-    return ({
-        cssFocused: {},
-        disabled: {},
-        cssOutlinedInput_primary: {
-            '&$cssFocused $notchedOutline': {
-                borderColor: 'rgba(0, 208, 205, 0.5) !important',
-                borderWidth: '2px',
-            },
-            '&$disabled $notchedOutline': {
-                borderColor: '#4D5E79 !important',
-                borderWidth: '1px',
-                borderRadius: '3px',
-            },
-        },
-        notchedOutline: {
-            borderWidth: '1px',
-            borderColor: 'rgb(33, 37, 41) !important',
-        },
-        error: {
-            '& $notchedOutline': {
-                borderColor: '#DA7163 !important',
-                borderWidth: '2px',
-            },
-            '&$cssFocused $notchedOutline': {
-                borderColor: '#DA7163 !important',
-            },
-        },
-        formHelperText: {
-            position: 'absolute',
-            right: '-12px',
-            top: '35px',
-            color: '#DA7163 !important',
-            fontFamily: 'OpenSans',
-            fontWeight: '300',
-            fontSize: '14px',
-            textAlign: 'right',
-        },
-    });
-};
-
 
 class Input extends React.Component {
     state = {
         isModalHintVisible: false,
+        isInputActive: false,
     };
 
     /**
-     * Trigger showing modal hint
+     * Show modal hint and show active input border color
      * @private
      */
-    _triggerModalHint = () => this.setState({isModalHintVisible: !this.state.isModalHintVisible});
+    _onInputFocus = () => {
+        this.setState({
+            isModalHintVisible: true,
+            isInputActive: true,
+        });
+    };
+
+    /**
+     * Hide modal hint and show defauld input border color
+     * @private
+     */
+    _onInputBlur = () => {
+        this.setState({
+            isModalHintVisible: false,
+            isInputActive: false,
+        });
+    };
+
 
     render() {
         const {
-            size,
-            inputType,
-            type,
+            error,
             className,
-            disabled,
-            onChange,
-            isError,
-            fullWidth,
-            required,
-            name,
-            classes,
-            InputProps,
-            handlerInputRef,
+            inputRef,
             renderModalHint,
             modalHintData,
+            endIcon,
+            helperText,
+            disabled,
             ...rest
         } = this.props;
-        const {isModalHintVisible} = this.state;
+        const {isModalHintVisible, isInputActive} = this.state;
 
         return (
+
             <div className={cn(
                 style['Input'],
-                className,
+                isInputActive && style['Input_Type_Active'],
+                error && style['Input_Type_Error'],
+                disabled && style['Input_Type_Disabled'],
+                className
             )}>
-                <TextField
-                    className={cn(
-                        style['Input-TextField'],
-                        style[`Input-TextField_size_${size}`],
-                        style[`Input-TextField_type_${inputType}`],
-                    )}
-                    inputRef={handlerInputRef}
-                    InputProps={{
-                        classes: {
-                            root: classes[`cssOutlinedInput_${inputType}`],
-                            focused: classes.cssFocused,
-                            notchedOutline: classes.notchedOutline,
-                            error: classes.error,
-                            disabled: classes.disabled,
-                        },
-                        ...InputProps,
-                    }}
-                    FormHelperTextProps={{
-                        classes: {
-                            root: classes.formHelperText,
-                        },
-                    }}
-
+                <input
+                    className={style['Input-InputText']}
+                    ref={inputRef}
                     disabled={disabled}
-                    onChange={onChange}
-                    error={isError}
-                    type={type}
-                    variant="outlined"
-                    fullWidth={fullWidth}
-                    required={required}
-                    name={name}
 
-                    onFocus={this._triggerModalHint}
-                    onBlur={this._triggerModalHint}
+                    onFocus={this._onInputFocus}
+                    onBlur={this._onInputBlur}
 
                     {...rest}
                 />
+                {endIcon &&
+                    <div className={style['Input-IconWrapper']}>
+                        {endIcon}
+                    </div>
+                }
+                {helperText &&
+                    <div className={style['Input-HelperText']}>
+                        {helperText}
+                    </div>
+                }
 
-                <Hint
-                    className={style['Input-ModalHint']}
-                    header={modalHintData ? modalHintData.header : null}
-                    content={modalHintData ? modalHintData.content : null}
-                    mount={isModalHintVisible && !!renderModalHint}
-                />
-
-
+                <div className={style['Input-ModalHint']}>
+                    <Hint
+                        header={modalHintData ? modalHintData.header : null}
+                        content={modalHintData ? modalHintData.content : null}
+                        mount={isModalHintVisible && !!renderModalHint}
+                    />
+                </div>
             </div>
         );
     }
 }
 
-Input.defaultProps = {
-    inputType: 'primary',
-    size: 'm',
-    disabled: false,
-    fullWidth: true,
-    required: true,
-    type: 'text',
-};
-
 Input.propTypes = {
-    className: PropTypes.any,
-    inputType: PropTypes.string,
-    type: PropTypes.string.isRequired,
-    size: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    classes: PropTypes.object,
-    InputProps: PropTypes.object,
-    disabled: PropTypes.bool,
-    onChange: PropTypes.func,
-    handlerInputRef: PropTypes.func,
-    isError: PropTypes.bool,
-    fullWidth: PropTypes.bool,
-    required: PropTypes.bool,
+    className: PropTypes.string,
+    error: PropTypes.bool,
+    inputRef: PropTypes.func,
+    helperText: PropTypes.string,
     modalHintData: PropTypes.shape({
         header: PropTypes.string,
         content: PropTypes.string,
     }),
     renderModalHint: PropTypes.bool,
+    disabled: PropTypes.bool,
+    endIcon: PropTypes.node,
 };
 
-export default withStyles(styles)(Input);
+export default Input;

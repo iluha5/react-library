@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import {TIME_OVER, TEN_SECONDS_LEFT} from 'utils/constants';
+import { TIME_OVER, TEN_SECONDS_LEFT } from 'utils/constants';
 import style from './style.scss';
 
 import Button from 'components/Button';
@@ -117,15 +117,12 @@ function App({
                         name='email'
                         placeholder='Type an email'
                         onChange={onEmailChange}
-                        InputProps={isEmailErrors ? {
-                            endAdornment: (
-                                <Icon
-                                    name={'warning'}
-                                    size={'m'}
-                                />
-                            ),
-                        } : null}
-
+                        endIcon={isEmailErrors &&
+                            <Icon
+                                name={'warning'}
+                                size={'sm'}
+                            />
+                        }
                         renderModalHint={isEmailErrors}
                         modalHintData={{
                             header: 'Enter an email',

@@ -1,36 +1,109 @@
+@import "../../variables";
+
 .Input {
     position: relative;
 
-    z-index: 1;
-}
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    height: 40px;
+    box-sizing: content-box;
 
-.Input-ModalHint {
-    position: absolute;
-    top: 0;
-    left: calc(100% + 13px);
-}
+    //border: 1px solid rgba(238, 238, 238, 0.4);
+    border: 1px solid #212529;
+    border-radius: 3px;
 
-.Input-TextField {
-    & input {
-        color: rgb(33, 37, 41);
-        height: 14px;
+    background: none;
+    z-index: $zindex-first-level;
+
+    &_Type {
+        &_Active {
+            height: 38px;
+            border: 2px solid $active-borderColor;
+
+            .Input-IconWrapper {
+                padding-right: 13px;
+            }
+
+            .Input-InputText {
+                padding-left: 26px;
+            }
+        }
+
+        &_Error {
+            height: 38px;
+            border: 2px solid $error-color;
+
+            .Input-IconWrapper {
+                padding-right: 13px;
+            }
+
+            .Input-InputText {
+                padding-left: 26px;
+            }
+        }
+
+        &_Disabled {
+            border-color: $bg-activeColor;
+            background: $bg-activeColor;
+        }
+    }
+
+    &-InputText {
+        padding: 11px 27px;
+
+        display: block;
+        height: 16px;
+        width: 100%;
+        box-sizing: content-box;
+
+
+        color: rgba(0, 0, 0, 0.7);
+        background: none;
+        border: none;
         font-size: 14px;
-        font-family: 'OpenSans';
-        font-weight: 300;
+        box-shadow: none;
+
+        &:active, &:focus {
+            border: none;
+            outline: none;
+        }
 
         &:disabled {
-            color: rgba(255, 255, 255, 0.1);
+            color: $text-third-color;
             border-radius: 3px;
             background-color: #4D5E79;
         }
-    }
 
-    &_size {
-        &_m {
-            & input {
-                padding: 14px 27px 14px 27px;
-            }
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.3);
         }
-    }
-}
 
+    }
+
+    &-IconWrapper {
+        padding-right: 14px;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &-ModalHint {
+        position: absolute;
+        top: -2px;
+        left: calc(100% + 13px);
+    }
+
+    &-HelperText {
+        position: absolute;
+        top: 41px;
+        right: 0;
+
+        overflow: hidden;
+        text-align: left;
+
+        color: $error-color;
+    }
+
+}
