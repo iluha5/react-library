@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Renders Render Button with default props 1`] = `
+<button
+  className="Btn Btn_size_m Btn_type_primary"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  <span
+    className="Btn-Label"
+  >
+    Button text
+  </span>
+</button>
+`;
+
+exports[`Button component Renders Render Button with size m, type link 1`] = `
+<button
+  className="Btn Btn_size_m Btn_type_link"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  <span
+    className="Btn-Label"
+  >
+    Button text
+  </span>
+</button>
+`;
+
+exports[`Button component Renders Render Button with size m, type link, classname mock-class 1`] = `
+<button
+  className="Btn Btn_size_m Btn_type_link mock-class"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  <span
+    className="Btn-Label"
+  >
+    Button text
+  </span>
+</button>
+`;
+
+exports[`Button component Renders Render Button with size s, type fake, disabled  1`] = `
+<button
+  className="Btn Btn_size_s Btn_type_fake"
+  disabled={true}
+  onClick={[MockFunction]}
+>
+  <span
+    className="Btn-Label"
+  >
+    Button text
+  </span>
+</button>
+`;
+
+exports[`Button component Renders Render Button with size s, type secondary,  1`] = `
+<button
+  className="Btn Btn_size_s Btn_type_secondary"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  <span
+    className="Btn-Label"
+  >
+    Button text
+  </span>
+</button>
+`;
+
+exports[`Button component Renders Render Button with size s, type success,  1`] = `
+<button
+  className="Btn Btn_size_s Btn_type_success"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  <span
+    className="Btn-Label"
+  >
+    Button text
+  </span>
+</button>
+`;
