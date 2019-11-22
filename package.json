@@ -8,7 +8,9 @@
         "watch": "webpack --mode=development --watch",
         "watch-prod": "webpack --mode=production --watch",
         "test": "jest",
-        "watch-test": "jest --watchAll",
+        "test:watch-all": "jest --watchAll",
+        "test:watch": "jest --watch",
+        "test:cover": "jest --coverage",
         "eslint": "node_modules/.bin/eslint --ext js,jsx src/"
     },
     "browserslist": [
@@ -76,6 +78,7 @@
         "postcss-loader": "^3.0.0",
         "prettier": "^1.18.2",
         "react-alice-carousel": "^1.15.2",
+        "react-test-renderer": "^16.12.0",
         "redux-devtools-extension": "^2.13.8",
         "sass-loader": "^7.2.0",
         "source-map-loader": "^0.2.4",

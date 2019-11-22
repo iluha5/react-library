@@ -27,3 +27,4 @@ database/migrations/.DS_Store
 docs/.DS_Store
 docs/backend/.DS_Store
 resources/views/vendor/.DS_Store
+/coverage

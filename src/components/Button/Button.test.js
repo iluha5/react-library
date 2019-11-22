@@ -1,8 +1,7 @@
 import React from 'react';
 import Button from 'components/Button';
-import toJson from 'enzyme-to-json';
 
-import {shallow} from 'enzyme';
+import{shallow} from 'enzyme';
 import {checkProps, findByClassName} from 'utils/testUtils';
 
 describe('Button component', () => {
@@ -51,7 +50,7 @@ describe('Button component', () => {
                 children: 'Button text',
                 onClick: mockFunc,
             };
-            const but = toJson(shallow(<Button {...props} />));
+            const but = shallow(<Button {...props} />);
 
             expect(but).toMatchSnapshot();
         });
@@ -63,7 +62,7 @@ describe('Button component', () => {
                 size: 's',
                 btnType: 'secondary',
             };
-            const but = toJson(shallow(<Button {...props} />));
+            const but = shallow(<Button {...props} />);
 
             expect(but).toMatchSnapshot();
         });
@@ -75,7 +74,7 @@ describe('Button component', () => {
                 size: 's',
                 btnType: 'success',
             };
-            const but = toJson(shallow(<Button {...props} />));
+            const but = shallow(<Button {...props} />);
 
             expect(but).toMatchSnapshot();
         });
@@ -88,7 +87,7 @@ describe('Button component', () => {
                 btnType: 'fake',
                 disabled: true,
             };
-            const but = toJson(shallow(<Button {...props} />));
+            const but = shallow(<Button {...props} />);
 
             expect(but).toMatchSnapshot();
         });
@@ -100,7 +99,7 @@ describe('Button component', () => {
                 size: 'm',
                 btnType: 'link',
             };
-            const but = toJson(shallow(<Button {...props} />));
+            const but = shallow(<Button {...props} />);
 
             expect(but).toMatchSnapshot();
         });
@@ -113,7 +112,7 @@ describe('Button component', () => {
                 size: 'm',
                 btnType: 'link',
             };
-            const but = toJson(shallow(<Button {...props} />));
+            const but = shallow(<Button {...props} />);
 
             expect(but).toMatchSnapshot();
         });

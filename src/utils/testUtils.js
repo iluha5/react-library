@@ -1,9 +1,9 @@
 import checkPropTypes from 'check-prop-types';
-import { applyMiddleware, createStore } from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import rootReducer from 'reducers';
-import { middlewares } from 'store';
+import {middlewares} from 'store';
 
-export const findByTestAtrr = (component, attr) =>  component.find(`[data-test='${attr}']`);
+export const findByTestAtrr = (component, attr) => component.find(`[data-test='${attr}']`);
 
 export const findByClassName = (component, className) => component.find(`.${className}`);
 
