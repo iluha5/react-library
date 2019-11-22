@@ -1,7 +1,7 @@
 import { testStore } from 'utils/testUtils';
 import { store as realStore } from 'store';
 import { updateNotification, removeNotification } from 'ac/notifications';
-import {NOTIFICATION_ERROR, NOTIFICATION_PASSED} from 'utils/constants';
+import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from 'utils/constants';
 import AppContainer from 'containers/App';
 
 describe('Store testing', () => {
@@ -83,7 +83,7 @@ describe('Store testing', () => {
         store.dispatch(removeNotification());
     });
 
-    describe('AppContainer methods test', () => {
+    describe('AppContainer methods integration test', () => {
         let appInstance, store;
 
         beforeEach(() => {
