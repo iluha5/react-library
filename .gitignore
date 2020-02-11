@@ -1,4 +1,5 @@
 /node_modules
+/wiki
 /public/main*
 /public/hot
 /public/storage
@@ -28,3 +29,4 @@ docs/.DS_Store
 docs/backend/.DS_Store
 resources/views/vendor/.DS_Store
 /coverage
+.gitignore
