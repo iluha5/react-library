@@ -6,7 +6,7 @@ import style from './style.scss';
 import Paper from 'components/Paper';
 import withAnimation from 'containers/WithAnimation';
 
-function Hint({ header, content, className }){
+export function Hint({ header, content, className }){
     return (
         <Paper
             className={cn(
