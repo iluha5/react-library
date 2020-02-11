@@ -11,7 +11,8 @@
         "test:watch-all": "jest --watchAll",
         "test:watch": "jest --watch",
         "test:cover": "jest --coverage",
-        "eslint": "node_modules/.bin/eslint --ext js,jsx src/"
+        "eslint": "node_modules/.bin/eslint --ext js,jsx src/",
+        "deploy": "firebase deploy --only hosting:order-components"
     },
     "browserslist": [
         "last 1 version",
