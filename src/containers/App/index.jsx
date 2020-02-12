@@ -21,6 +21,7 @@ class AppContainer extends React.Component {
         this.state = {
             isBox1Checked: false,
             isCheckboxModalOpen: false,
+            isLoginModalOpen: false,
             timeLeft: 0,
             timerID: 0,
             isEmailErrors: false,
@@ -63,6 +64,18 @@ class AppContainer extends React.Component {
 
         this.setState({
             isCheckboxModalOpen: !isCheckboxModalOpen,
+        });
+    };
+
+    /**
+     * Trigger popup for Login form
+     * @private
+     */
+    _triggerLoginButtonClick = () => {
+        const {isLoginModalOpen} = this.state;
+
+        this.setState({
+            isLoginModalOpen: !isLoginModalOpen,
         });
     };
 
@@ -119,7 +132,7 @@ class AppContainer extends React.Component {
     };
 
     render() {
-        const {isBox1Checked, timeLeft, timerID, isCheckboxModalOpen, isEmailErrors} = this.state;
+        const {isBox1Checked, timeLeft, timerID, isCheckboxModalOpen, isEmailErrors, isLoginModalOpen} = this.state;
 
         return (
             <>
@@ -135,6 +148,8 @@ class AppContainer extends React.Component {
                     isCheckboxModalOpen={isCheckboxModalOpen}
                     onEmailChange={this._handlerEmailChange}
                     isEmailErrors={isEmailErrors}
+                    isLoginModalOpen={isLoginModalOpen}
+                    handlerLoginClick={this._triggerLoginButtonClick}
                 />
                 <NotificationContainer/>
             </>

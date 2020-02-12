@@ -12,6 +12,7 @@ import Modal from 'components/Modal';
 import Input from 'components/Input';
 import Icon from 'components/Icon';
 import MultiEmailsExample from 'components/MultiEmailsExample';
+import LoginContainer from 'containers/Login';
 
 function App({
     handlerButtonClick,
@@ -25,10 +26,17 @@ function App({
     handlerTimeButtonClick,
     isEmailErrors,
     onEmailChange,
+    handlerLoginClick,
+    isLoginModalOpen,
 }) {
     const checkboxModalData = {
         header: 'Important message',
         content: 'I\'m popup message. Try to close me with mouse or keyboard. Bye!',
+    };
+
+    const loginModalData = {
+        header: 'Login',
+        content: <LoginContainer/>,
     };
 
     return (
@@ -170,13 +178,38 @@ function App({
                     <MultiEmailsExample/>
                 </div>
             </div>
+            <h2 className={style['App-Title']}>
+                Login form.
+            </h2>
+            <h3 className={style['App-SubTitle']}>
+                {/*Please login with <strong>test@test.test</strong> and <strong>11111111</strong>*/}
+                Try to login.
+            </h3>
+            <div className={style['App-Line']}>
+                <div className={style['App-Item']}>
+                    {/*<Button*/}
+                    {/*onClick={handlerLoginClick}*/}
+                    {/*>*/}
+                    {/*Open login form*/}
+                    {/*</Button>*/}
+                    <div id={'firebaseui-auth-container'}></div>
+                </div>
+            </div>
 
             {isCheckboxModalOpen &&
-            <Modal
-                header={checkboxModalData.header}
-                content={checkboxModalData.content}
-                handleClose={triggerCheckboxButtonClick}
-            />
+                <Modal
+                    header={checkboxModalData.header}
+                    content={checkboxModalData.content}
+                    handleClose={triggerCheckboxButtonClick}
+                />
+            }
+
+            {isLoginModalOpen &&
+                <Modal
+                    header={loginModalData.header}
+                    content={loginModalData.content}
+                    handleClose={handlerLoginClick}
+                />
             }
         </div>
     );
@@ -194,6 +227,8 @@ App.propTypes = {
     handlerTimeButtonClick: PropTypes.func.isRequired,
     triggerCheckboxButtonClick: PropTypes.func.isRequired,
     timerID: PropTypes.number.isRequired,
+    handlerLoginClick: PropTypes.func.isRequired,
+    isLoginModalOpen: PropTypes.bool.isRequired,
 };
 
 export default App;
