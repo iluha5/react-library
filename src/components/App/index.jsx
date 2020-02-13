@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
+
 import cn from 'classnames';
 
-import { TIME_OVER, TEN_SECONDS_LEFT } from 'utils/constants';
+import {TIME_OVER, TEN_SECONDS_LEFT} from 'utils/constants';
 import style from './style.scss';
 
 import Button from 'components/Button';
@@ -28,6 +30,7 @@ function App({
     onEmailChange,
     handlerLoginClick,
     isLoginModalOpen,
+    history,
 }) {
     const checkboxModalData = {
         header: 'Important message',
@@ -126,10 +129,10 @@ function App({
                         placeholder='Type an email'
                         onChange={onEmailChange}
                         endIcon={isEmailErrors &&
-                            <Icon
-                                name={'warning'}
-                                size={'sm'}
-                            />
+                        <Icon
+                            name={'warning'}
+                            size={'sm'}
+                        />
                         }
                         renderModalHint={isEmailErrors}
                         modalHintData={{
@@ -187,29 +190,29 @@ function App({
             </h3>
             <div className={style['App-Line']}>
                 <div className={style['App-Item']}>
-                    {/*<Button*/}
-                    {/*onClick={handlerLoginClick}*/}
-                    {/*>*/}
-                    {/*Open login form*/}
-                    {/*</Button>*/}
-                    <div id={'firebaseui-auth-container'}></div>
+                    <Button
+                        // onClick={handlerLoginClick}
+                        onClick={() => history.push('/login')}
+                    >
+                        Go to login form
+                    </Button>
                 </div>
             </div>
 
             {isCheckboxModalOpen &&
-                <Modal
-                    header={checkboxModalData.header}
-                    content={checkboxModalData.content}
-                    handleClose={triggerCheckboxButtonClick}
-                />
+            <Modal
+                header={checkboxModalData.header}
+                content={checkboxModalData.content}
+                handleClose={triggerCheckboxButtonClick}
+            />
             }
 
             {isLoginModalOpen &&
-                <Modal
-                    header={loginModalData.header}
-                    content={loginModalData.content}
-                    handleClose={handlerLoginClick}
-                />
+            <Modal
+                header={loginModalData.header}
+                content={loginModalData.content}
+                handleClose={handlerLoginClick}
+            />
             }
         </div>
     );
@@ -229,6 +232,9 @@ App.propTypes = {
     timerID: PropTypes.number.isRequired,
     handlerLoginClick: PropTypes.func.isRequired,
     isLoginModalOpen: PropTypes.bool.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func,
+    }),
 };
 
-export default App;
+export default withRouter(App);
