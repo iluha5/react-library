@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import style from './style.scss';
 
-import { REGEX_EMAIL } from 'utils/constants';
+import {REGEX_EMAIL} from 'utils/constants';
 
 import Input from 'components/Input';
 import Icon from 'components/Icon';
@@ -116,72 +116,74 @@ class Login extends React.Component {
 
         return (
             <div className={style['Login']}>
-                <div className={style['Login-Hint']}>Login</div>
-                <form onSubmit={onSubmit}>
-                    <Input
-                        autoFocus
-                        onChange={this._handleEmailChange}
-                        error={isEmailErrors}
-                        placeholder={'Input Email'}
-                        name='email'
-                        type='email'
-                        inputRef={(inputRef) => this._emailRef = inputRef}
-                        className={style['Login-Input']}
-                        endIcon={isEmailErrors &&
-                        <Icon
-                            name={'warning'}
-                            size={'sm'}
+                <div className={style['Login-Inner']}>
+                    <div className={style['Login-Hint']}>Login</div>
+                    <form className={style['Login-Form']} onSubmit={onSubmit}>
+                        <Input
+                            autoFocus
+                            onChange={this._handleEmailChange}
+                            error={isEmailErrors}
+                            placeholder={'Input Email'}
+                            name='email'
+                            type='email'
+                            inputRef={(inputRef) => this._emailRef = inputRef}
+                            className={style['Login-Input']}
+                            endIcon={isEmailErrors &&
+                            <Icon
+                                name={'warning'}
+                                size={'sm'}
+                            />
+                            }
+                            renderModalHint={isEmailErrors}
+                            modalHintData={{
+                                header: 'Email',
+                                content: 'Please, enter a valid email.',
+                            }}
                         />
-                        }
-                        renderModalHint={isEmailErrors}
-                        modalHintData={{
-                            header: 'Email',
-                            content: 'Please, enter a valid email.',
-                        }}
-                    />
-                    <Input
-                        inputRef={(inputRef) => this._passwordRef = inputRef}
-                        className={style['Login-Input']}
-                        name="password"
-                        type={isPasswordVisible ? 'text' : 'password'}
-                        placeholder={'Enter password'}
-                        error={isPasswordErrors}
-                        onChange={this._handlePasswordChange}
+                        <Input
+                            inputRef={(inputRef) => this._passwordRef = inputRef}
+                            className={style['Login-Input']}
+                            name="password"
+                            type={isPasswordVisible ? 'text' : 'password'}
+                            placeholder={'Enter password'}
+                            error={isPasswordErrors}
+                            onChange={this._handlePasswordChange}
 
-                        endIcon={isPasswordVisible ?
-                            <Icon
-                                className={style['Login-Input_ViewIcon']}
-                                name={'view-accent'}
-                                size={'s'}
-                                onClick={this._handleViewClick('isPasswordVisible')}/>
-                            :
-                            <Icon
-                                className={style['Login-Input_ViewIcon']}
-                                name={'view'}
-                                size={'s'}
-                                onClick={this._handleViewClick('isPasswordVisible')}/>
-                        }
+                            endIcon={isPasswordVisible ?
+                                <Icon
+                                    className={style['Login-Input_ViewIcon']}
+                                    name={'view-accent'}
+                                    size={'s'}
+                                    onClick={this._handleViewClick('isPasswordVisible')}/>
+                                :
+                                <Icon
+                                    className={style['Login-Input_ViewIcon']}
+                                    name={'view'}
+                                    size={'s'}
+                                    onClick={this._handleViewClick('isPasswordVisible')}/>
+                            }
 
-                        renderModalHint={isPasswordErrors}
-                        modalHintData={{
-                            header: 'Enter your password',
-                        }}
-                    />
-                    <div className={style['Login-Utils']}>
-                        <Link to="/forgot" className={style['Login-Link']}>{'Forgot your password?'}</Link>
-                    </div>
-                    <Button
-                        className={style['Login-Btn']}
-                        disabled={(isEmailErrors || !email.trim() || isPasswordErrors || password.length === 0)
-                        && !(isPasswordAutofill && isEmailAutofill)}
-                    >
-                        {'Login'}
-                    </Button>
-                    <div className={style['Login-RegistrationContainer']}>
-                        <span>{'Do not have an account?'}</span>
-                        <Link to="/registration" className={style['Login-Link']}>{'Signup'}</Link>
-                    </div>
-                </form>
+                            renderModalHint={isPasswordErrors}
+                            modalHintData={{
+                                header: 'Enter your password',
+                            }}
+                        />
+                        <div className={style['Login-Utils']}>
+                            <Link to="/forgot" className={style['Login-Link']}>{'Forgot your password?'}</Link>
+                        </div>
+                        <Button
+                            className={style['Login-Btn']}
+                            disabled={(isEmailErrors || !email.trim() || isPasswordErrors || password.length === 0)
+                            && !(isPasswordAutofill && isEmailAutofill)}
+                        >
+                            {'Login'}
+                        </Button>
+                        <div className={style['Login-RegistrationContainer']}>
+                            <span>{'Do not have an account?'}</span>
+                            <Link to="/registration" className={style['Login-Link']}>{'Signup'}</Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }

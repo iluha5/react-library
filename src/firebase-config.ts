@@ -9,6 +9,8 @@ export const config = {
     measurementId: "G-7VLN2BF95R"
 };
 
+export type IFirebaseConfig = typeof config;
+
 
 
 // @ts-nocheck

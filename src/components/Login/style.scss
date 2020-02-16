@@ -1,11 +1,100 @@
-@import "../../variables";
+@import '../../variables';
 
 .Login {
-    padding: 20px 30px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: $bg-brandColor;
+    width: 100%;
+    height: 100%;
+}
+
+.Login-Inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 580px;
+    height: 380px;
+    padding: 37px 48px;
+
+    border: 1px solid $bg-darkColor;
+    border-radius: 3px;
+
+}
+
+.Login-Form {
+    text-align: center;
+}
+
+.Login-Hint {
+    margin-bottom: 28px;
+    font-size: 21px;
+    font-weight: 500;
+
+    color: $text-fifth-color;
+    text-align: center;
+}
+
+.Login-Input {
+    & + .Login-Input {
+        margin-top: 28px;
+    }
+}
+
+.Login-Utils {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 15px;
+}
+
+.Login-CheckboxLabel {
+    font-size: 12px;
+}
+
+.Login-Link {
+    font-size: 12px;
+    color: $link-color;
+
+    transition: 0.2s ease;
+
+    &:hover {
+        color: $link-hoverColor
+    }
+}
+
+.Login-Btn {
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-top: 20px;
+}
+
+.Login-RegistrationContainer {
+    font-size: 12px;
+    margin-top: 17px;
+
+    & span {
+        margin-right: 8px;
+    }
+}
+
+.Login-Input_ViewIcon {
+    cursor: pointer;
+}
+
+@keyframes onAutoFillStart {
+    from { /**/
+    }
+    to { /**/
+    }
+}
+
+input:-webkit-autofill {
+    // Expose a hook for JavaScript when autofill is shown
+    // JavaScript can capture 'animationstart' events
+    animation-name: onAutoFillStart;
+
+    // Make the background color become yellow really slowly
+    transition: background-color 0s ease-in-out 0s;
 }
