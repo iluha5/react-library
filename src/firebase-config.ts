@@ -1,15 +1,5 @@
-export const config = {
-    apiKey: "AIzaSyAwKNKE3B-k7vpli1rCVH7QOBmGiBDwVXE",
-    authDomain: "orderbase-e062c.firebaseapp.com",
-    databaseURL: "https://orderbase-e062c.firebaseio.com",
-    projectId: "orderbase-e062c",
-    storageBucket: "orderbase-e062c.appspot.com",
-    messagingSenderId: "1013530626525",
-    appId: "1:1013530626525:web:fbe3397f1bda25c0158e34",
-    measurementId: "G-7VLN2BF95R"
-};
 
-export type IFirebaseConfig = typeof config;
+//export type IFirebaseConfig = typeof config;
 
 
 
@@ -22,16 +12,6 @@ export type IFirebaseConfig = typeof config;
 // import "firebase/auth";
 //
 //
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAwKNKE3B-k7vpli1rCVH7QOBmGiBDwVXE",
-//     authDomain: "orderbase-e062c.firebaseapp.com",
-//     databaseURL: "https://orderbase-e062c.firebaseio.com",
-//     projectId: "orderbase-e062c",
-//     storageBucket: "orderbase-e062c.appspot.com",
-//     messagingSenderId: "1013530626525",
-//     appId: "1:1013530626525:web:fbe3397f1bda25c0158e34",
-//     measurementId: "G-7VLN2BF95R"
-// };
 //
 // const uiConfig = {
 //     signInSuccessUrl: '<url-to-redirect-to-on-success>',

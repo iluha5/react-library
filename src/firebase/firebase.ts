@@ -1,9 +1,11 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 // import 'firebase/firestore'
-import { config, IFirebaseConfig } from '../firebase-config'
+import { config } from '../../env';
 import {showNotification} from 'utils/utils';
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
+
+type IFirebaseConfig = typeof config;
 
 class FirebaseService {
     constructor(fbConfig: IFirebaseConfig) {
