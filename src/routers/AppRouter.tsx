@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginContainer from "containers/Login";
-import AppContainer from "containers/App";
+import MainContainer from "containers/Main";
 import { Route, Switch } from "react-router-dom";
 
 
@@ -10,7 +10,7 @@ class AppRouter extends React.Component {
             <>
                 <Switch>
                     <Route path="/login" component={LoginContainer} />
-                    <Route path="*" component={AppContainer} />
+                    <Route path="*" component={MainContainer} />
                 </Switch>
             </>
         );

@@ -2,7 +2,7 @@ import { testStore } from 'utils/testUtils';
 import { store as realStore } from 'store';
 import { updateNotification, removeNotification } from 'ac/notifications';
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from 'utils/constants';
-import AppContainer from 'containers/App';
+import AppContainer from 'containers/Main';
 
 describe('Store testing', () => {
 

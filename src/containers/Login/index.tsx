@@ -4,6 +4,7 @@ import Login from "components/Login";
 import { showNotification } from "utils/utils";
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
 import fb from '../../firebase/firebase';
+import AuthPattern from "components/AuthPattern";
 
 class LoginContainer extends React.Component {
     _handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,9 +25,11 @@ class LoginContainer extends React.Component {
 
     render() {
         return (
-            <Login
-                onSubmit={this._handleSubmit}
-            />
+            <AuthPattern>
+                <Login
+                    onSubmit={this._handleSubmit}
+                />
+            </AuthPattern>
         );
     }
 }

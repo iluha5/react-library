@@ -1,0 +1,35 @@
+@import "../../variables";
+
+.Menu {
+  display: flex;
+  height: 49px;
+  padding: 0;
+  margin-left: auto;
+  line-height: 49px;
+  list-style-type: none;
+}
+
+.Menu-Item {
+  & + & {
+    margin-left: 24px;
+  }
+}
+
+.Menu-Link {
+  display: inline-block;
+    padding: 0 18px;
+  height: 49px;
+  line-height: 49px;
+  color: $text-base-color;
+
+  transition: 0.2s ease;
+
+  &_Active {
+      border-bottom: 3px solid $bg-thirdColor;
+  }
+
+  &:hover {
+      border-bottom: 3px solid $bg-thirdColor;
+      color: $text-base-color;
+  }
+}
