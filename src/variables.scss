@@ -1,8 +1,10 @@
 $base-color: #FFF;
 $text-base-color: #FFF;
+//$text-base-color: rgba(0, 0, 0, 0.7);
 $text-second-color: rgba(255, 255, 255, 0.7);
 $text-third-color: rgba(255, 255, 255, 0.5);
 $text-fourth-color: rgba(255, 255, 255, 0.3);
+$text-fifth-color: rgba(0, 0, 0, 0.7);
 
 // Color
 $primary-color: #33B0B3;
@@ -14,10 +16,10 @@ $disabled-color: #3D4D68;
 $link-color: #00D0CD;
 $link-hoverColor: #00FFFB;
 $active-borderColor: rgba(0, 208, 205, 0.5);
-;
 
 $bg-brandColor: #35445D;
 $bg-secondColor: #455673;
+$bg-darkColor: rgba(0, 0, 0, 0.7);
 
 $bg-activeColor: #4D5E79;
 $bg-accentColor: #566781;

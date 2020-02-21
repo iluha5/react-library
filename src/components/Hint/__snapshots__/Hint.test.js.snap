@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hint component Render Button with props 1 1`] = `
+<ForwardRef
+  background="rgb(247, 247, 249)"
+  className="Hint"
+  depth={1}
+>
+  <div
+    className="Hint-Header"
+  >
+    Test Hint
+  </div>
+  <div
+    className="Hint-Content"
+  >
+    Test Content
+  </div>
+</ForwardRef>
+`;

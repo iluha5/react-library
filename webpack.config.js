@@ -14,10 +14,10 @@ module.exports = {
     output: {
         filename: 'js/main.js',
         path: path.resolve(__dirname, 'public/'),
-        publicPath: '',
+        publicPath: '/',
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.scss'],
+        extensions: ['.js', '.jsx', '.scss', '.ts', '.tsx'],
         modules: ['node_modules'],
         alias: {
             components: path.resolve(__dirname, './src/components/'),
@@ -44,6 +44,11 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: ['ts-loader'],
             },
             {
                 test: /\.(sa|sc|c)ss|css$/,
@@ -79,6 +84,13 @@ module.exports = {
                                     localIdentName: '[local]_[hash:base64:15]',
                                 },
                             },
+                            // {
+                            //     loader: 'typings-for-css-modules-loader',
+                            //     options: {
+                            //         modules: true,
+                            //         namedExport: true
+                            //     }
+                            // },
                             {
                                 loader: 'postcss-loader',
                                 options: {

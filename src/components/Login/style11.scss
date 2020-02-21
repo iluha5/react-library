@@ -1,0 +1,11 @@
+@import "../../variables";
+
+.Login {
+    padding: 20px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: $bg-brandColor;
+}

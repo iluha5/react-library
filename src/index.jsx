@@ -1,22 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider} from 'react-redux';
-
 import { store } from './store/index';
-import AppContainer from 'containers/App';
 
- import fonts from './fonts.scss'; // eslint-disable-line
+import fonts from './fonts.scss'; // eslint-disable-line
 
 import './global-styles.scss?raw';
+
+import RootContainer from 'containers/Root';
 
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <Switch>
-                <Route path="*" component={AppContainer} />
-            </Switch>
+            <RootContainer/>
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')

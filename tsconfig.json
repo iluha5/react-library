@@ -1,0 +1,75 @@
+//{
+//    "compilerOptions": {
+//        "target": "es6",
+//        "watch": true,
+//        "allowJs": false,
+//        "jsx": "react",
+//        "strict": true,
+//        "baseUrl": "./",
+//        "allowSyntheticDefaultImports": true,
+//        "skipLibCheck": true,
+//        "paths": {
+//            "components/*": ["src/components/*"],
+//            "containers/*": ["src/containers/*"],
+//            "img/*": ["src/img/*"],
+//            "reducers/*": ["src/reducers/*"],
+//            "store/*": ["src/store/*"],
+//            "ac/*": ["src/ac/"],
+//            "utils/*": ["src/utils/"]
+//        }
+//    },
+//    "include": [
+//        "src",
+//        "globals.d.ts"
+//    ],
+//    "exclude": [
+//        "node_modules"
+//    ]
+//}
+//
+////        "lib": ["dom", "es2017"],
+
+//        "lib": [
+//            "dom",
+//            "dom.iterable",
+//            "esnext"
+//        ],
+
+{
+    "compilerOptions": {
+        "lib": ["es6", "webworker", "dom", "es2015"],         /* Specify library files to be included in the compilation. */
+        "target": "es6",
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+//        "noEmit": true,
+        "jsx": "react",
+        "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
+        "paths": {
+            "api/*": ["src/api/*"],
+            "ac/*": ["src/ac/*"],
+            "store/*": ["src/store/*"],
+            "routes/*": ["src/routes/*"],
+            "containers/*": ["src/containers/*"],
+            "components/*": ["src/components/*"],
+            "reducers/*": ["src/reducers/*"],
+            "utils/*": ["src/utils/*"],
+            "languages/*": ["src/languages/*"],
+            "img/*": ["src/img/*"]
+        }                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    },
+        "include": [
+            "src",
+            "globals.d.ts"
+        ],
+        "exclude": [
+            "node_modules"
+        ]
+}

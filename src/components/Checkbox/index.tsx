@@ -1,9 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { FC, InputHTMLAttributes } from 'react';
 
-import style from './style.scss';
+// import * as style from './style.scss';
+const style = require('./style.scss');
 
-function Checkbox({id, ...rest}) {
+interface IProps extends InputHTMLAttributes<HTMLInputElement>{
+    id: string
+}
+
+const Checkbox: FC<IProps> =  ({id, ...rest}) => {
     return (
         <div className={style['Checkbox']} >
             <input
@@ -17,10 +22,6 @@ function Checkbox({id, ...rest}) {
             </label>
         </div>
     );
-}
-
-Checkbox.propTypes = {
-    id: PropTypes.string.isRequired,
 };
 
 export default Checkbox;

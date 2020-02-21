@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
+
 import cn from 'classnames';
 
-import { TIME_OVER, TEN_SECONDS_LEFT } from 'utils/constants';
+import {TIME_OVER, TEN_SECONDS_LEFT} from 'utils/constants';
 import style from './style.scss';
 
 import Button from 'components/Button';
@@ -12,6 +14,7 @@ import Modal from 'components/Modal';
 import Input from 'components/Input';
 import Icon from 'components/Icon';
 import MultiEmailsExample from 'components/MultiEmailsExample';
+import LoginContainer from 'containers/Login';
 
 function App({
     handlerButtonClick,
@@ -25,10 +28,18 @@ function App({
     handlerTimeButtonClick,
     isEmailErrors,
     onEmailChange,
+    handlerLoginClick,
+    isLoginModalOpen,
+    history,
 }) {
     const checkboxModalData = {
         header: 'Important message',
         content: 'I\'m popup message. Try to close me with mouse or keyboard. Bye!',
+    };
+
+    const loginModalData = {
+        header: 'Login',
+        content: <LoginContainer/>,
     };
 
     return (
@@ -118,10 +129,10 @@ function App({
                         placeholder='Type an email'
                         onChange={onEmailChange}
                         endIcon={isEmailErrors &&
-                            <Icon
-                                name={'warning'}
-                                size={'sm'}
-                            />
+                        <Icon
+                            name={'warning'}
+                            size={'sm'}
+                        />
                         }
                         renderModalHint={isEmailErrors}
                         modalHintData={{
@@ -170,12 +181,37 @@ function App({
                     <MultiEmailsExample/>
                 </div>
             </div>
+            <h2 className={style['App-Title']}>
+                Login form.
+            </h2>
+            <h3 className={style['App-SubTitle']}>
+                {/*Please login with <strong>test@test.test</strong> and <strong>11111111</strong>*/}
+                Try to login.
+            </h3>
+            <div className={style['App-Line']}>
+                <div className={style['App-Item']}>
+                    <Button
+                        // onClick={handlerLoginClick}
+                        onClick={() => history.push('/login')}
+                    >
+                        Go to login form
+                    </Button>
+                </div>
+            </div>
 
             {isCheckboxModalOpen &&
             <Modal
                 header={checkboxModalData.header}
                 content={checkboxModalData.content}
                 handleClose={triggerCheckboxButtonClick}
+            />
+            }
+
+            {isLoginModalOpen &&
+            <Modal
+                header={loginModalData.header}
+                content={loginModalData.content}
+                handleClose={handlerLoginClick}
             />
             }
         </div>
@@ -194,6 +230,11 @@ App.propTypes = {
     handlerTimeButtonClick: PropTypes.func.isRequired,
     triggerCheckboxButtonClick: PropTypes.func.isRequired,
     timerID: PropTypes.number.isRequired,
+    handlerLoginClick: PropTypes.func.isRequired,
+    isLoginModalOpen: PropTypes.bool.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func,
+    }),
 };
 
-export default App;
+export default withRouter(App);
