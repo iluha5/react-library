@@ -1,18 +1,18 @@
 import React from 'react';
-import LoginContainer from "containers/Login";
 import MainContainer from "containers/Main";
 import { Route, Switch } from "react-router-dom";
+import AuthRouter from 'routers/AuthRouter'
+import Page404 from "components/Page404";
 
 
 class AppRouter extends React.Component {
     render() {
         return (
-            <>
-                <Switch>
-                    <Route path="/login" component={LoginContainer} />
-                    <Route path="*" component={MainContainer} />
-                </Switch>
-            </>
+            <Switch>
+                <Route exact path={['/login', '/registration']} component={AuthRouter}/>
+                <Route exact path='/' component={MainContainer}/>
+                <Route path="*" component={Page404}/>
+            </Switch>
         );
     }
 }

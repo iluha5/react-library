@@ -27,6 +27,7 @@ module.exports = {
             reducers: path.resolve(__dirname, './src/reducers/'),
             store: path.resolve(__dirname, './src/store/'),
             utils: path.resolve(__dirname, './src/utils/'),
+            routers: path.resolve(__dirname, './src/routers/'),
         },
     },
     devtool: 'source-map',

@@ -11,6 +11,8 @@ $btn-base-color: #3388e7;
     transition: 0.2s all;
     outline: none;
 
+    font-family: OpenSans, sans-serif;
+
     &_size {
         &_m {
             padding: 7px 30px;
@@ -55,7 +57,7 @@ $btn-base-color: #3388e7;
         &_link {
             color: $link-color;
             &:hover {
-                color: #00FFFB;
+                color: $link-hoverColor;
             }
         }
 
