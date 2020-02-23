@@ -18,8 +18,8 @@ interface IProps {
 
 class Modal extends React.Component<IProps> {
     private _modalRef = React.createRef<HTMLDivElement>();
-    private _bodyOriginalMarginRight: string;
-    private _bodyOriginalOverflow: string;
+    private _bodyOriginalMarginRight: string = '';
+    private _bodyOriginalOverflow: string = '';
 
     componentDidMount() {
         const { handleClose, withBodyScroll, isLoader } = this.props;

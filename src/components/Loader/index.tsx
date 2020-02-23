@@ -25,7 +25,7 @@ class Loader extends React.Component<undefined, IState> {
                     css={override}
                     sizeUnit={'px'}
                     size={50}
-                    color={'#3388e7'}
+                    color={'#f9843e'}
                     loading={this.state.loading}
                 />
             </div>

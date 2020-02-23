@@ -1,5 +1,4 @@
 import {
-    loginActionTypes,
     notificationsActionTypes,
 } from 'ac/constants';
 import { notificationTypes } from 'utils/constants';
@@ -20,7 +19,7 @@ export interface INotificationState {
 }
 
 export interface INotificationAction {
-    type: notificationsActionTypes | loginActionTypes.LOGOUT_SUCCESS,
+    type: notificationsActionTypes,
     payload?: {
         data: INotificationData,
         type: notificationTypes,
@@ -45,8 +44,6 @@ const notification = (state: INotificationState = defaultNotificationState, acti
                 };
             } else return state;
         case notificationsActionTypes.REMOVE_NOTIFICATION:
-            return { ...defaultNotificationState };
-        case loginActionTypes.LOGOUT_SUCCESS:
             return { ...defaultNotificationState };
         default:
             return state;

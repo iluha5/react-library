@@ -51,7 +51,7 @@ class LoginContainer extends React.Component<Props> {
         return (
             <>
                 {user.isFetching &&
-                    <Modal isLoader/>
+                <Modal isLoader/>
                 }
                 <AuthPattern>
                     <Login

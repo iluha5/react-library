@@ -27,12 +27,23 @@ class FirebaseService {
         return firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            // .then(res => {
-            //     console.log(res);
-            //     showNotification(NOTIFICATION_PASSED, 'You are successfully logged in, with email: ' + email)
-            // })
-            // .catch(() => showNotification(NOTIFICATION_ERROR, 'Login failed! Please, try later!'));
+    };
+
+    signOut = (): Promise<void> => {
+        return firebase
+            .auth()
+            .signOut();
     }
+
+    // isTokenExpire = () => {
+    //     const user = firebase.auth().currentUser;
+    //     const token = firebase.auth().currentUser ? firebase.auth().currentUser!.getIdToken() : null;
+    //
+    //     console.log('user', user);
+    //     console.log('token', token);
+    //
+    //
+    // }
 
 
 }
