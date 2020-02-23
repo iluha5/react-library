@@ -27,13 +27,13 @@ export interface INotificationAction {
     }
 }
 
-const defaultState = {
+export const defaultNotificationState = {
     type: '',
     shouldRender: false,
     data: {},
 };
 
-const notification = (state: INotificationState = defaultState, action: INotificationAction) => {
+const notification = (state: INotificationState = defaultNotificationState, action: INotificationAction) => {
     switch (action.type) {
         case notificationsActionTypes.UPDATE_NOTIFICATION:
             if (action.payload) {
@@ -45,9 +45,9 @@ const notification = (state: INotificationState = defaultState, action: INotific
                 };
             } else return state;
         case notificationsActionTypes.REMOVE_NOTIFICATION:
-            return { ...defaultState };
+            return { ...defaultNotificationState };
         case loginActionTypes.LOGOUT_SUCCESS:
-            return { ...defaultState };
+            return { ...defaultNotificationState };
         default:
             return state;
     }

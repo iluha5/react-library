@@ -1,8 +1,8 @@
-import { store } from 'store';
+import { store } from 'store/index';
 import { updateNotification } from 'ac/notifications';
 import { REGEX_EMAIL } from 'utils/constants';
 
-export const showNotification = (type, title) => {
+export const showNotification = (type: string, title: string) => {
     updateNotification(
         type,
         {
@@ -12,7 +12,7 @@ export const showNotification = (type, title) => {
 };
 
 
-export const isEmailFn = (str) => {
+export const isEmailFn = (str: string) => {
     return REGEX_EMAIL.test(str.trim().toLowerCase());
 };
 

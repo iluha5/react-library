@@ -135,9 +135,9 @@ NotificationContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-    shouldRender: state.data.notification.shouldRender,
-    type: state.data.notification.type,
-    data: state.data.notification.data,
+    shouldRender: state.notification.shouldRender,
+    type: state.notification.type,
+    data: state.notification.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({

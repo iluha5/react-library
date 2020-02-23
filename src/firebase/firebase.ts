@@ -4,6 +4,7 @@ import 'firebase/auth'
 import { config } from '../../env';
 import {showNotification} from 'utils/utils';
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
+import UserCredential = firebase.auth.UserCredential;
 
 type IFirebaseConfig = typeof config;
 
@@ -22,16 +23,15 @@ class FirebaseService {
     //     .collection('people')
     //     .onSnapshot(data => callback(processCollectionResponse(data)))
 
-    loginWithEmailAndPassword = (email: string, password: string): void => {
-        firebase
+    loginWithEmailAndPassword = (email: string, password: string): Promise<UserCredential> => {
+        return firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(res => {
-                console.log(res);
-                showNotification(NOTIFICATION_PASSED, 'You are successfully logged in, with email: ' + email)
-            })
-            .catch(() => showNotification(NOTIFICATION_ERROR, 'Login failed! Please, try later!'));
-
+            // .then(res => {
+            //     console.log(res);
+            //     showNotification(NOTIFICATION_PASSED, 'You are successfully logged in, with email: ' + email)
+            // })
+            // .catch(() => showNotification(NOTIFICATION_ERROR, 'Login failed! Please, try later!'));
     }
 
 

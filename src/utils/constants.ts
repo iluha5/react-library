@@ -1,20 +1,20 @@
 export const NOTIFICATION_ERROR = 'NOTIFICATION_ERROR';
 export const NOTIFICATION_PASSED = 'NOTIFICATION_PASSED';
 
-export enum notificationTypes {
-    ACHIEVEMENT = 'ACHIEVEMENT',
-        PASSED = 'PASSED',
-        LAB_STOP_ERROR = 'LAB_STOP_ERROR',
-        LAB_START_ERROR = 'LAB_START_ERROR',
-        NOTIFICATION_ERROR = 'NOTIFICATION_ERROR',
-}
-
-export enum notificationClassSuffixes {
-    ERROR = 'Error',
-        PASSING = 'Passing',
-        ACHIEVEMENT = 'Achievement',
-        DEFAULT = ''
-}
+// export enum notificationTypes {
+//     ACHIEVEMENT = 'ACHIEVEMENT',
+//         PASSED = 'PASSED',
+//         LAB_STOP_ERROR = 'LAB_STOP_ERROR',
+//         LAB_START_ERROR = 'LAB_START_ERROR',
+//         NOTIFICATION_ERROR = 'NOTIFICATION_ERROR',
+// }
+//
+// export enum notificationClassSuffixes {
+//     ERROR = 'Error',
+//         PASSING = 'Passing',
+//         ACHIEVEMENT = 'Achievement',
+//         DEFAULT = ''
+// }
 
 
 export const TIME_OVER = 'TIME_OVER';
