@@ -1,5 +1,5 @@
 .App {
-    padding: 10px 30px;
+    padding: 10px 10px;
 
     &-Line {
         margin-top: 20px;
@@ -7,7 +7,8 @@
 
         display: flex;
 
-        background: rgb(247, 247, 249);;
+        border-radius: 3px;
+        background: #ececec;
     }
 
     &-Item {

@@ -16,7 +16,7 @@ import Icon from 'components/Icon';
 import MultiEmailsExample from 'components/MultiEmailsExample';
 import LoginContainer from 'containers/Login';
 
-function App({
+function Main({
     handlerButtonClick,
     triggerBox1,
     isBox1Checked,
@@ -43,7 +43,7 @@ function App({
     };
 
     return (
-        <div className={style['App']}>
+        <div className={cn(style['App'], 'container')}>
             <h2 className={style['App-Title']}>
                 Buttons and Notifications.
             </h2>
@@ -218,7 +218,7 @@ function App({
     );
 }
 
-App.propTypes = {
+Main.propTypes = {
     handlerButtonClick: PropTypes.func.isRequired,
     triggerBox1: PropTypes.func.isRequired,
     isBox1Checked: PropTypes.bool.isRequired,
@@ -237,4 +237,4 @@ App.propTypes = {
     }),
 };
 
-export default withRouter(App);
+export default withRouter(Main);

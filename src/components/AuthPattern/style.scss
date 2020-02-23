@@ -1,0 +1,127 @@
+@import '../../variables';
+
+@keyframes animateOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.AuthPattern {
+    flex-grow: 2;
+    padding: 30px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: animateOpacity 0.3s ease-in-out 1 both;
+    //background: radial-gradient(100% 50%, rgba(51, 185, 189, 0.3) 0%, rgba(51, 185, 189, 0) 100%);
+}
+
+
+.AuthPattern-Modal {
+    display: flex;
+    min-width: 579px;
+
+    &_WithImage {
+        min-width: 696px;
+
+        .AuthPattern-Pattern {
+            height: 186px;
+        }
+
+        .AuthPattern-ImageWrapper {
+            top: -180px;
+
+            width: 300px;
+            height: 300px;
+
+            margin-bottom: -180px;
+        }
+
+        .AuthPattern-Content {
+            width: 557px;
+        }
+    }
+}
+
+.AuthPattern-Main {
+    width: 100%;
+}
+
+.AuthPattern-PaperContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #f9843e;
+    border-radius: 3px;
+}
+
+.AuthPattern-Content {
+    width: 407px;
+
+    padding: 0 0 48px 0;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.AuthPattern-ImageWrapper {
+    position: relative;
+    top: -35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto -18px auto;
+
+}
+
+.AuthPattern-Logo {
+    width: 70px;
+}
+
+.AuthPattern-Pattern {
+    position: relative;
+
+    height: 91px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+
+    background: $bg-authPattern;
+    background-size: cover;
+
+    overflow: hidden;
+
+    //&:before {
+    //    position: absolute;
+    //    right: 41%;
+    //    width: 30px;
+    //    height: 100%;
+    //    display: block;
+    //    background: rgba(0, 208, 205, 0.05);
+    //    transform: matrix(1, -2, -10, 3.5, 0, 0);
+    //    content: '';
+    //}
+    //&:after {
+    //    position: absolute;
+    //    right: 67%;
+    //    width: 12px;
+    //    height: 100%;
+    //    display: block;
+    //    background: rgba(0, 208, 205, 0.05);
+    //    transform: matrix(1, -2, -10, 3.5, 0, 0);
+    //    content: '';
+    //}
+}

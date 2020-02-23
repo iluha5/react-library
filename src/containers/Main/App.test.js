@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AppContainer from 'containers/App/index';
+import AppContainer from 'containers/Main/index';
 
 describe('AppContainer', () => {
     it('Should render without errors', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import App from 'components/App';
-import NotificationContainer from 'containers/Notification';
+import Main from 'components/Main';
 import {showNotification} from 'utils/utils';
 import {
     REGEX_EMAIL,
@@ -135,24 +134,21 @@ class AppContainer extends React.Component {
         const {isBox1Checked, timeLeft, timerID, isCheckboxModalOpen, isEmailErrors, isLoginModalOpen} = this.state;
 
         return (
-            <>
-                <App
-                    handlerButtonClick={this._handlerButtonClick}
-                    triggerCheckboxButtonClick={this._triggerCheckboxButtonClick}
-                    triggerBox1={this._triggerBox1}
-                    isBox1Checked={isBox1Checked}
-                    timeLeft={timeLeft}
-                    handlerTime={this._handlerTime}
-                    handlerTimeButtonClick={this._handlerTimerButton}
-                    timerID={timerID}
-                    isCheckboxModalOpen={isCheckboxModalOpen}
-                    onEmailChange={this._handlerEmailChange}
-                    isEmailErrors={isEmailErrors}
-                    isLoginModalOpen={isLoginModalOpen}
-                    handlerLoginClick={this._triggerLoginButtonClick}
-                />
-                <NotificationContainer/>
-            </>
+            <Main
+                handlerButtonClick={this._handlerButtonClick}
+                triggerCheckboxButtonClick={this._triggerCheckboxButtonClick}
+                triggerBox1={this._triggerBox1}
+                isBox1Checked={isBox1Checked}
+                timeLeft={timeLeft}
+                handlerTime={this._handlerTime}
+                handlerTimeButtonClick={this._handlerTimerButton}
+                timerID={timerID}
+                isCheckboxModalOpen={isCheckboxModalOpen}
+                onEmailChange={this._handlerEmailChange}
+                isEmailErrors={isEmailErrors}
+                isLoginModalOpen={isLoginModalOpen}
+                handlerLoginClick={this._triggerLoginButtonClick}
+            />
         );
     }
 }

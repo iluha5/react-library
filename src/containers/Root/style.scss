@@ -1,0 +1,31 @@
+.Root {
+    display: flex;
+    flex-direction: column;
+
+    background: url("../../img/bg.png") repeat;
+}
+
+//.Root_Full {
+//    height: 100vh;
+//    overflow: hidden;
+//}
+
+.Root-AuthFull {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.Root-Header {
+    flex-shrink: 0;
+}
+
+.Root-Auth {
+    flex-grow: 2;
+    padding: 30px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    //background: radial-gradient(100% 50%, rgba(51, 185, 189, 0.3) 0%, rgba(51, 185, 189, 0) 100%);
+}

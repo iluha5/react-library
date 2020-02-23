@@ -1,0 +1,40 @@
+@import '../../variables';
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    min-width: 1200px;
+    height: 49px;
+    background: $bg-secondColor;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Header-Inner {
+    display: flex;
+    align-items: center;
+}
+
+.Header-Link {
+    display: inline-block;
+
+    margin-left: 35px;
+}
+
+.Header-Logo {
+    display: block;
+    width: 157px;
+}
+
+.Header-LogoText {
+    width: 100px;
+
+    color: #f7f7f7;
+}
+
+.Header-UserMenu {
+    margin-left: 39px;
+
+    z-index: 100;
+}

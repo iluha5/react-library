@@ -95,7 +95,7 @@ class Input extends React.Component {
 Input.propTypes = {
     className: PropTypes.string,
     error: PropTypes.bool,
-    inputRef: PropTypes.func,
+    inputRef: PropTypes.object,
     helperText: PropTypes.string,
     modalHintData: PropTypes.shape({
         header: PropTypes.string,
