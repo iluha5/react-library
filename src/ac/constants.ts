@@ -7,6 +7,7 @@ export enum notificationsActionTypes {
 }
 export enum loginActionTypes {
     LOGIN_REQUEST = 'LOGIN_REQUEST',
+    SIGNUP_REQUEST = 'SIGNUP_REQUEST',
     LOGIN_SUCCESS = 'LOGIN_SUCCESS',
     LOGIN_FAILURE = 'LOGIN_FAILURE',
     LOGOUT_SUCCESS = 'LOGOUT_SUCCESS',

@@ -1,0 +1,43 @@
+@import "../../variables";
+
+.Registration-Hint {
+    height: 30px;
+    margin-bottom: 14px;
+    font-size: 21px;
+    font-weight: 500;
+
+    color: $text-fifth-color;
+}
+
+.Registration-Input {
+    margin-bottom: 28px;
+}
+
+.Registration-Btn {
+    padding-left: 49px;
+    padding-right: 50px;
+    margin-top: 28px;
+}
+
+.Registration-Forgot {
+    margin-top: 17px;
+}
+
+.Registration-Login {
+    margin-top: 15px;
+}
+
+.Registration-Link {
+    font-size: 12px;
+    color: $link-color;
+
+    transition: 0.2s ease;
+
+    &:hover {
+        color: $link-hoverColor;
+    }
+}
+
+.Registration-Input_ViewIcon {
+    cursor: pointer;
+}
