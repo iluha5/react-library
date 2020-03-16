@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FormEvent } from 'react';
+import { isEqual, isEmpty } from 'lodash-es';
 
 import {
     NAME_INPUT_MAX_LENGTH,
@@ -10,7 +11,6 @@ import {
     REGEX_NICKNAME,
     REGEX_PASSWORD,
 } from 'utils/constants';
-import { deepCompare, isObjectEmpty } from 'utils/utils';
 
 import style from './style.scss';
 
@@ -74,17 +74,12 @@ class Registration extends React.Component<IProps, IState> {
     _passwordRef = React.createRef<HTMLInputElement>();
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
-        // console.log('this.props.errors', this.props.errors);
-        // console.log('prevProps.errors', prevProps.errors);
-        // console.log('deepCompare(this.props.errors, prevProps.errors)', deepCompare(this.props.errors, prevProps.errors));
-        console.log('[][]', deepCompare([1], [1]));
-
-        // if (!deepCompare(this.props.errors, prevProps.errors) || prevState.isSubmit) {
-        //     this.setState({
-        //         errors: this.props.errors,
-        //         isSubmit: false,
-        //     });
-        // }
+        if (!isEqual(this.props.errors, prevProps.errors) || prevState.isSubmit) {
+            this.setState({
+                errors: this.props.errors,
+                isSubmit: false,
+            });
+        }
     }
 
     /**
@@ -432,8 +427,8 @@ class Registration extends React.Component<IProps, IState> {
                         || !name.trim()
                         || !surname.trim()
                         || !nickname.trim()
-                        || !email.trim() && (!invitedUserData || isObjectEmpty(invitedUserData))
-                        || isEmailErrors && (!invitedUserData || isObjectEmpty(invitedUserData))
+                        || !email.trim() && (!invitedUserData || isEmpty(invitedUserData))
+                        || isEmailErrors && (!invitedUserData || isEmpty(invitedUserData))
                         || isNicknameErrors
                         || (errors.length !== 0)
                         || isNameErrors
