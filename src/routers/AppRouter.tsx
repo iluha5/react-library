@@ -9,7 +9,7 @@ class AppRouter extends React.Component {
     render() {
         return (
             <Switch>
-                <Route exact path={'/login'} render={() => <Redirect to={'/'} />} />
+                <Route exact path={['/login', '/registration']} render={() => <Redirect to={'/'} />} />
                 <Route exact path='/' component={MainContainer}/>
                 <Route path="*" component={Page404}/>
             </Switch>

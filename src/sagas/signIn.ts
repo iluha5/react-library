@@ -11,7 +11,7 @@ function* signIn(action: SignInRequestAction) {
 
     try {
         const user = yield call(fb.loginWithEmailAndPassword, email, password);
-        // console.log('user', user);
+
         yield put(signInSuccess(user.user.email, user.user.refreshToken));
 
         showNotification(NOTIFICATION_PASSED, 'You are successfully logged in!');

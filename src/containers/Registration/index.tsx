@@ -9,9 +9,9 @@ import Registration from 'components/Registration';
 import Modal from 'components/Modal';
 import Button from 'components/Button';
 
-import { getDeepProp } from 'utils/utils';
-import { httpResponseCodes } from 'utils/constants';
 import AuthPattern from "components/AuthPattern";
+import { rootState } from "reducers/index";
+import { IUserState } from "reducers/user";
 
 const ERRORS = {
     EMAIL_OCCUPIED: 'EMAIL_OCCUPIED',
@@ -20,11 +20,14 @@ const ERRORS = {
     OTHER_ERROR: 'OTHER_ERROR',
 };
 
+interface IStateProps {
+    user: IUserState,
+}
 interface IDispatchState {
     signUpRequest: (email: string, password: string) => SignUpRequestAction,
 }
 
-type Props = IDispatchState & RouteComponentProps;
+type Props = IStateProps & IDispatchState & RouteComponentProps;
 
 interface IInvitedUserData {
     email: string,
@@ -75,6 +78,33 @@ class RegistrationContainer extends React.Component<Props, IState> {
         }
     }
 
+    static getDerivedStateFromProps(props: Props, state: IState) {
+        const { user: { errorCode } } = props;
+        const { errors } = state;
+
+        if (errorCode) {
+            switch (errorCode) {
+                case 'auth/email-already-in-use':
+                    if (errors.includes(ERRORS.EMAIL_OCCUPIED)) {
+                        return null;
+                    }
+
+                    return {
+                        errors: [...errors, ERRORS.EMAIL_OCCUPIED],
+                    };
+                default:
+                    if (errors.includes(ERRORS.OTHER_DATA_ERROR)) {
+                        return null;
+                    }
+
+                    return {
+                      errors: [...errors, ERRORS.OTHER_DATA_ERROR],
+                    };
+            }
+        }
+
+        return null;
+    }
     /**
      * Post registration form to backend
      * @param e
@@ -83,59 +113,18 @@ class RegistrationContainer extends React.Component<Props, IState> {
     private _handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const { invitedUserData } = this.state;
+        const { signUpRequest } = this.props;
         const formData = new FormData(e.currentTarget);
-
-        formData.delete('confirmPassword');
-
-        if (invitedUserData) {
-            formData.append('email', (invitedUserData! as IInvitedUserData).email);
-            formData.append('token', (invitedUserData! as IInvitedUserData).token);
-        }
+        const email = formData.get('email');
+        const password = formData.get('password');
 
         this.setState({
-                isFetching: true,
                 errors: [],
-            }, () => console.log('registration request')
-            // () => dataApi
-            //     .post('registration', undefined, formData)
-            //     .then(() => {
-            //         this.setState({
-            //             isFetching: false,
-            //             isFetched: true,
-            //         });
-            //     })
-            //     .catch(e => {
-            //         let errors: string[] = [];
-            //
-            //         if (getDeepProp(e, 'response.data.data.nickname')) errors.push(ERRORS.NICKNAME_OCCUPIED);
-            //         if (getDeepProp(e, 'response.data.data.email')) errors.push(ERRORS.EMAIL_OCCUPIED);
-            //
-            //         if (errors.length !== 0) {
-            //             this.setState({
-            //                 errors: [...errors],
-            //                 isModal: true,
-            //                 isFetching: false,
-            //             });
-            //
-            //             return;
-            //         }
-            //
-            //         if (getDeepProp(e, 'response.status') === httpResponseCodes.HTTP_422) {
-            //             this.setState({
-            //                 errors: [ERRORS.OTHER_DATA_ERROR],
-            //                 isModal: true,
-            //                 isFetching: false,
-            //             });
-            //             return;
-            //         }
-            //
-            //         this.setState({
-            //             errors: [ERRORS.OTHER_ERROR],
-            //             isModal: true,
-            //             isFetching: false,
-            //         });
-            //     }),
+            }, () => {
+                if (email && password && typeof email === 'string' && typeof password === 'string') {
+                    signUpRequest(email, password);
+                }
+            }
         );
     };
 
@@ -175,7 +164,7 @@ class RegistrationContainer extends React.Component<Props, IState> {
     }
 
     render() {
-        const { history } = this.props;
+        const { history, user } = this.props;
         const { isFetched, isFetching, isModal, errors, invitedUserData } = this.state;
         const modalSuccessRegistration = {
             header: 'Sign up',
@@ -213,7 +202,7 @@ class RegistrationContainer extends React.Component<Props, IState> {
                     />
                 </AuthPattern>
                 {
-                    isFetched &&
+                    user.isFetched &&
                     <Modal
                         header={modalSuccessRegistration.header}
                         content={modalSuccessRegistration.content}
@@ -229,7 +218,7 @@ class RegistrationContainer extends React.Component<Props, IState> {
                     />
                 }
                 {
-                    isFetching &&
+                    user.isFetching &&
                     <Modal isLoader/>
                 }
             </>
@@ -237,8 +226,12 @@ class RegistrationContainer extends React.Component<Props, IState> {
     }
 }
 
+const mapStateToProps = (state: rootState) => ({
+   user: state.user,
+});
+
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     signUpRequest: (email: string, password: string) => dispatch(signUpRequest(email, password)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(RegistrationContainer));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RegistrationContainer));

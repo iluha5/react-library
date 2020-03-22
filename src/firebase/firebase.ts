@@ -26,7 +26,13 @@ class FirebaseService {
     loginWithEmailAndPassword = (email: string, password: string): Promise<UserCredential> => {
         return firebase
             .auth()
-            .signInWithEmailAndPassword(email, password)
+            .signInWithEmailAndPassword(email, password);
+    };
+
+    signUp = (email: string, password: string): Promise<UserCredential> => {
+        return firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password);
     };
 
     signOut = (): Promise<void> => {
