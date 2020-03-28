@@ -15,7 +15,8 @@ $secondary-color: #7A9DC4;
 $success-color: #317FB9;
 $fake-color: #5D7092;
 $error-color: #DA7163;
-$disabled-color: #3D4D68;
+//$disabled-color: #3D4D68;
+$disabled-color: #f3b590;
 //$link-color: #00D0CD;
 $link-color: #f9843e;
 //$link-hoverColor: #00FFFB;
@@ -45,6 +46,7 @@ $boxShadow: rgba(0, 0, 0, 0.15);
 $zindex-first-level: 1;
 $zindex-third-level: 9;
 $zindex-notifications: 10000;
+$zindex-modal: 1000;
 
 //tests
 $timer_fixed_top: 7px;

@@ -1,39 +1,30 @@
 import * as React from 'react';
-
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 import style from './style.scss';
 
-import {Link} from 'react-router-dom';
 import Menu from "components/Menu";
 
-interface IProps extends React.HTMLProps<HTMLElement>{
+interface IProps extends React.HTMLProps<HTMLElement> {
     isLoggedIn: boolean,
+    onLogoutClick: () => void
 }
 
-function Header({ isLoggedIn, className }: IProps){
+
+const Header: React.FC<IProps> = ({ isLoggedIn, className, onLogoutClick }) => {
     return (
         <header className={cn(style.Header, className)}>
             <div className={cn('container', style['Header-Inner'])}>
-                <Link className={style['Header-Link']} to={
-                    isLoggedIn ?
-                    '/courses'
-                    :
-                    '/'
-                }>
+                <Link className={style['Header-Link']} to={'/'}>
                     {/*<img className={style['Header-Logo']} src={logo} />*/}
                     <div className={style['Header-LogoText']}>HOME</div>
                 </Link>
-                {!isLoggedIn &&
-                    <Menu />
-                }
-                {/*{isLoggedIn &&*/}
-                    {/*<>*/}
-                    {/*</>*/}
-                {/*}*/}
+                <Menu onLogoutClick={onLogoutClick} loggedIn={isLoggedIn}/>
             </div>
         </header>
     );
-}
+};
+
 
 export default Header;

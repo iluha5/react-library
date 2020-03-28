@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider} from 'react-redux';
-import { store } from './store/index';
-
-import fonts from './fonts.scss'; // eslint-disable-line
+import { store } from 'store/index';
+import RootContainer from 'containers/Root';
 
 import './global-styles.scss?raw';
+import fonts from './fonts.scss'; // eslint-disable-line
 
-import RootContainer from 'containers/Root';
 
 
 ReactDOM.render(

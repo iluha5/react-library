@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import cn from 'classnames';
 
 import style from './style.scss';
@@ -8,7 +7,20 @@ import Icon from 'components/Icon';
 import Portal from 'components/Portal';
 import Loader from 'components/Loader';
 
-class Modal extends React.Component {
+interface IProps {
+    handleClose?: () => void;
+    header?: string | React.ReactNode;
+    content?: string | React.ReactNode;
+    isLoader?: boolean;
+    withoutSizes?: boolean;
+    withBodyScroll?: boolean;
+}
+
+class Modal extends React.Component<IProps> {
+    private _modalRef = React.createRef<HTMLDivElement>();
+    private _bodyOriginalMarginRight: string = '';
+    private _bodyOriginalOverflow: string = '';
+
     componentDidMount() {
         const { handleClose, withBodyScroll, isLoader } = this.props;
 
@@ -17,7 +29,13 @@ class Modal extends React.Component {
             document.addEventListener('keydown', this._handlerEscPress);
         }
 
-        if (!withBodyScroll && !isLoader) document.body.style.overflow = 'hidden';
+        if (!withBodyScroll && !isLoader) {
+            this._bodyOriginalMarginRight = document.body.style.marginRight;
+            this._bodyOriginalOverflow = document.body.style.overflow;
+
+            document.body.style.marginRight =  `${window.innerWidth - document.body.clientWidth}px`;
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     componentWillUnmount() {
@@ -28,7 +46,10 @@ class Modal extends React.Component {
             document.removeEventListener('keydown', this._handlerEscPress);
         }
 
-        if (!withBodyScroll && !isLoader) document.body.style.overflow = 'auto';
+        if (!withBodyScroll && !isLoader) {
+            document.body.style.overflow = this._bodyOriginalOverflow;
+            document.body.style.marginRight = this._bodyOriginalMarginRight;
+        }
     }
 
     /**
@@ -36,10 +57,10 @@ class Modal extends React.Component {
      * @param event
      * @private
      */
-    _handlerClickOutside = (event) => {
+    private _handlerClickOutside = (event: MouseEvent) => {
         const { handleClose } = this.props;
 
-        if (!this._modalRef.contains(event.target)){
+        if (this._modalRef.current && !this._modalRef.current.contains(event.target as Element) && handleClose){
             handleClose();
         }
     };
@@ -49,10 +70,10 @@ class Modal extends React.Component {
      * @param event
      * @private
      */
-    _handlerEscPress = (event) => {
+    private _handlerEscPress = (event: KeyboardEvent) => {
         const { handleClose } = this.props;
 
-        if (event.keyCode === 27){
+        if (event.keyCode === 27 && handleClose){
             handleClose();
         }
     };
@@ -76,7 +97,7 @@ class Modal extends React.Component {
                         withoutSizes && style['Modal_WithoutSizes'])}
                 >
                     <div
-                        ref={refID => this._modalRef = refID}
+                        ref={this._modalRef}
                         className={style['Modal-Container']}
                     >
                         {header &&
@@ -103,20 +124,5 @@ class Modal extends React.Component {
         );
     }
 }
-
-Modal.propTypes = {
-    header: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object,
-    ]),
-    content: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object,
-    ]),
-    handleClose: PropTypes.func,
-    isLoader: PropTypes.bool,
-    withoutSizes: PropTypes.bool,
-    withBodyScroll: PropTypes.bool,
-};
 
 export default Modal;

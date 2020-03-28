@@ -1,5 +1,15 @@
 @import '../../variables';
 
+@keyframes animateOpacity {
+    0% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
 .Modal {
     position: fixed;
     top: 0;
@@ -17,7 +27,7 @@
 
     overflow-y: auto;
 
-    z-index: 1000;
+    z-index: $zindex-modal;
 
     &_WithoutSizes {
         .Modal-Container {
@@ -44,19 +54,19 @@
     max-width: 900px;
     padding: 40px 45px 40px 47px;
 
-    background: $bg-secondColor;
+    background: $success-color;
     border-radius: 3px;
+
+    animation: animateOpacity 0.2s ease-in-out both;
 }
 
 .Modal-Header {
-    height: 30px;
-
     font-size: 21px;
     font-weight: 500;
 }
 
 .Modal-Content {
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 6px 8px;
 
     color: $text-base-color;
@@ -72,5 +82,5 @@
 
     display: flex;
 
-    background-color: $bg-secondColor;
+    background-color: $success-color;
 }

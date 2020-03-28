@@ -1,9 +1,7 @@
 import React from 'react';
 import LoginContainer from "containers/Login";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import RegistrationContainer from "containers/Registration";
-import Page404 from "components/Page404";
-
 
 class AppRouter extends React.Component {
     render() {
@@ -11,7 +9,7 @@ class AppRouter extends React.Component {
             <Switch>
                 <Route path="/login" component={LoginContainer}/>
                 <Route path="/registration" component={RegistrationContainer}/>
-                <Route path="/404" component={Page404}/>
+                <Route path="*" render={() => <Redirect to={'/login'}/>}/>
             </Switch>
         );
     }

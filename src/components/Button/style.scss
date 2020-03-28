@@ -15,10 +15,10 @@ $btn-base-color: #3388e7;
 
     &_size {
         &_m {
-            padding: 7px 30px;
+            padding: 7px    30px;
         }
 
-        &_s {
+        &_xs {
             padding: 3px 27px 4px 27px;
         }
     }
@@ -83,9 +83,9 @@ $btn-base-color: #3388e7;
     &:disabled:focus,
     &:disabled:hover,
     &:disabled:active {
-        background-color: rgba(0, 0, 0, 0.12);
-        border-color: transparent;
-        color: rgba(0, 0, 0, 0.26);
+        background-color: $disabled-color;
+        border-color: $disabled-color;
+        color: rgba(255, 255, 255, 0.9);
         cursor: not-allowed;
     }
 }

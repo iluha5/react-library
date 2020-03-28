@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: './src/index.tsx',
     output: {
         filename: 'js/main.js',
         path: path.resolve(__dirname, 'public/'),
@@ -28,6 +28,7 @@ module.exports = {
             store: path.resolve(__dirname, './src/store/'),
             utils: path.resolve(__dirname, './src/utils/'),
             routers: path.resolve(__dirname, './src/routers/'),
+            sagas: path.resolve(__dirname, './src/sagas/'),
         },
     },
     devtool: 'source-map',
