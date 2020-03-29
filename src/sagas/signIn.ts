@@ -12,10 +12,13 @@ function* signIn(action: SignInRequestAction) {
     try {
         const user = yield call(fb.loginWithEmailAndPassword, email, password);
 
+        yield call(fb.fetchUsers);
+
         yield put(signInSuccess(user.user.email, user.user.refreshToken));
 
         showNotification(NOTIFICATION_PASSED, 'You are successfully logged in!');
-    } catch {
+    } catch (err) {
+        console.log('err', err);
         yield put(signInFail());
 
         showNotification(NOTIFICATION_ERROR, 'Login failed! Please, try again!')

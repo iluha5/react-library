@@ -15,9 +15,11 @@ function* signUp(action: SignUpRequestAction) {
 
         if (user.user && user.user.email && user.user.refreshToken) {
             yield put(signUpSuccess(user.user.email, user.user.refreshToken));
-        }
 
-        showNotification(NOTIFICATION_PASSED, 'You are successfully signed up');
+            showNotification(NOTIFICATION_PASSED, 'You are successfully signed up');
+        } else {
+            showNotification(NOTIFICATION_ERROR, 'Sign up failed! Please, try again!');
+        }
     } catch (error) {
         const { code } = error;
 

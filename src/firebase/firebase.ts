@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
-// import 'firebase/firestore'
+import 'firebase/firestore'
 import { config } from '../../env';
 import {showNotification} from 'utils/utils';
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
@@ -14,10 +14,11 @@ class FirebaseService {
         // this.fb = firebase;
     }
 
-    // fetchPeople = () => this.fb.firestore()
-    //     .collection('people')
-    //     .get()
-    //     .then(processCollectionResponse)
+    fetchUsers = () => firebase.firestore()
+        .collection('users')
+        .get()
+        .then((snapshot) => console.log('users', snapshot.docs.map(doc => ({...doc, id: doc.id}) )));
+
     //
     // onPeopleChange = (callback) => this.fb.firestore()
     //     .collection('people')

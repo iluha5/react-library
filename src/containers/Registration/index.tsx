@@ -7,7 +7,6 @@ import { SignUpRequestAction, signUpRequest } from 'ac/auth';
 
 import Registration from 'components/Registration';
 import Modal from 'components/Modal';
-import Button from 'components/Button';
 
 import AuthPattern from "components/AuthPattern";
 import { rootState } from "reducers/index";
@@ -164,25 +163,8 @@ class RegistrationContainer extends React.Component<Props, IState> {
     }
 
     render() {
-        const { history, user } = this.props;
-        const { isFetched, isFetching, isModal, errors, invitedUserData } = this.state;
-        const modalSuccessRegistration = {
-            header: 'Sign up',
-            content: (
-                <>
-                    <div style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-                        {'You have successfully signed up! We will send you a confirmation,\n so please check your email. If you cannot find it, please log in\n with your email/password and you will see the instructions. Thank you!'}
-                    </div>
-                    <div style={{ marginTop: '30px' }}>
-                        <Button
-                            onClick={() => history.push('/login')}
-                        >
-                            {'To Login'}
-                        </Button>
-                    </div>
-                </>
-            ),
-        };
+        const { user } = this.props;
+        const { isModal, errors, invitedUserData } = this.state;
         const modalRegistrationHeader = 'Sign up';
         const errorsContent = {
             otherDataError: 'User cannot be created. Please, try again.',
@@ -201,13 +183,6 @@ class RegistrationContainer extends React.Component<Props, IState> {
                         invitedUserData={!invitedUserData ? invitedUserData : null}
                     />
                 </AuthPattern>
-                {
-                    user.isFetched &&
-                    <Modal
-                        header={modalSuccessRegistration.header}
-                        content={modalSuccessRegistration.content}
-                    />
-                }
                 {
                     isModal && (errors.find(error => error === ERRORS.OTHER_DATA_ERROR)
                         || errors.find(error => error === ERRORS.OTHER_ERROR)) &&
