@@ -5,6 +5,7 @@ import { config } from '../../env';
 import {showNotification} from 'utils/utils';
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
 import UserCredential = firebase.auth.UserCredential;
+import { store } from "store/index";
 
 type IFirebaseConfig = typeof config;
 
@@ -18,6 +19,32 @@ class FirebaseService {
         .collection('users')
         .get()
         .then((snapshot) => console.log('users', snapshot.docs.map(doc => ({...doc, id: doc.id}) )));
+
+    // printUserStatus = () => {
+    //     firebase
+    //         .auth()
+    //         .onAuthStateChanged(user => {
+    //             if (user) {
+    //                 console.log('user logged in: ', user);
+    //             } else {
+    //                 console.log('user logged out');
+    //             }
+    //         })
+    // };
+
+    subscribeUserStatus = (onUserLoggedIn: (user: any) => void, onUserNotLoggedIn: () => void) => {
+        return firebase
+            .auth()
+            .onAuthStateChanged(user => {
+                if (user) {
+                    console.log('user logged in', user);
+                    onUserLoggedIn(user);
+                } else {
+                    console.log('user logged out');
+                    onUserNotLoggedIn();
+                }
+            })
+    };
 
     //
     // onPeopleChange = (callback) => this.fb.firestore()

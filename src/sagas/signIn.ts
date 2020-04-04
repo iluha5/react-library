@@ -1,6 +1,6 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
 import { signInFail, SignInRequestAction, signInSuccess } from "ac/auth";
-import { loginActionTypes } from "ac/constants";
+import { LoginActionTypes } from "ac/constants";
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
 import { showNotification } from 'utils/utils';
 
@@ -26,7 +26,7 @@ function* signIn(action: SignInRequestAction) {
 }
 
 function* signInSaga() {
-    yield takeLatest(loginActionTypes.LOGIN_REQUEST, signIn);
+    yield takeLatest(LoginActionTypes.LOGIN_REQUEST, signIn);
 }
 
 export default signInSaga;

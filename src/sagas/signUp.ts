@@ -5,7 +5,7 @@ import { signUpFail, SignUpRequestAction, signUpSuccess } from "ac/auth";
 import fb from "../firebase/firebase";
 import { showNotification } from "utils/utils";
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
-import { loginActionTypes } from "ac/constants";
+import { LoginActionTypes } from "ac/constants";
 
 function* signUp(action: SignUpRequestAction) {
     const { email, password } = action.payload;
@@ -34,7 +34,7 @@ function* signUp(action: SignUpRequestAction) {
 }
 
 function* signUpSaga() {
-    yield takeLatest(loginActionTypes.SIGNUP_REQUEST, signUp);
+    yield takeLatest(LoginActionTypes.SIGNUP_REQUEST, signUp);
 }
 
 export default signUpSaga;

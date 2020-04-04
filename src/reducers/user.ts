@@ -5,7 +5,7 @@ import {
     SignUpRequestAction,
     SignUpSuccessAction
 } from "ac/auth";
-import { loginActionTypes } from "ac/constants";
+import { LoginActionTypes } from "ac/constants";
 
 export interface IUserState {
     isFetching: boolean,
@@ -38,8 +38,8 @@ export type AuthActions = SignInRequestAction
 
 const user = (state: IUserState = defaultUserState, action: AuthActions) => {
     switch (action.type) {
-        case loginActionTypes.LOGIN_REQUEST:
-        case loginActionTypes.SIGNUP_REQUEST:
+        case LoginActionTypes.LOGIN_REQUEST:
+        case LoginActionTypes.SIGNUP_REQUEST:
             return {
                 ...state,
                 errorCode: '',
@@ -47,8 +47,8 @@ const user = (state: IUserState = defaultUserState, action: AuthActions) => {
                 isFetched: false,
                 isError: false,
             };
-        case loginActionTypes.LOGIN_SUCCESS:
-        case loginActionTypes.SIGNUP_SUCCESS:
+        case LoginActionTypes.LOGIN_SUCCESS:
+        case LoginActionTypes.SIGNUP_SUCCESS:
             return {
                 ...state,
                 errorCode: '',
@@ -61,7 +61,7 @@ const user = (state: IUserState = defaultUserState, action: AuthActions) => {
                     token: action.payload.token,
                 }
             };
-        case loginActionTypes.LOGIN_FAILURE:
+        case LoginActionTypes.LOGIN_FAILURE:
             return {
                 ...state,
                 errorCode: '',
@@ -69,7 +69,7 @@ const user = (state: IUserState = defaultUserState, action: AuthActions) => {
                 isFetched: false,
                 isError: true,
             };
-        case loginActionTypes.SIGNUP_FAILURE:
+        case LoginActionTypes.SIGNUP_FAILURE:
             return {
                 ...state,
                 errorCode: action.payload.errorCode,

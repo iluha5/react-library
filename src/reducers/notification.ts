@@ -1,5 +1,5 @@
 import {
-    notificationsActionTypes,
+    NotificationsActionTypes,
 } from 'ac/constants';
 import { notificationTypes } from 'utils/constants';
 
@@ -19,7 +19,7 @@ export interface INotificationState {
 }
 
 export interface INotificationAction {
-    type: notificationsActionTypes,
+    type: NotificationsActionTypes,
     payload?: {
         data: INotificationData,
         type: notificationTypes,
@@ -34,7 +34,7 @@ export const defaultNotificationState = {
 
 const notification = (state: INotificationState = defaultNotificationState, action: INotificationAction) => {
     switch (action.type) {
-        case notificationsActionTypes.UPDATE_NOTIFICATION:
+        case NotificationsActionTypes.UPDATE_NOTIFICATION:
             if (action.payload) {
                 return {
                     ...state,
@@ -43,7 +43,7 @@ const notification = (state: INotificationState = defaultNotificationState, acti
                     data: action.payload.data,
                 };
             } else return state;
-        case notificationsActionTypes.REMOVE_NOTIFICATION:
+        case NotificationsActionTypes.REMOVE_NOTIFICATION:
             return { ...defaultNotificationState };
         default:
             return state;

@@ -1,9 +1,9 @@
 import { ActionCreator } from "redux";
 
-import { loginActionTypes } from "ac/constants";
+import { LoginActionTypes } from "ac/constants";
 
 export interface SignInRequestAction {
-    type: loginActionTypes.LOGIN_REQUEST,
+    type: LoginActionTypes.LOGIN_REQUEST,
     payload: {
         email: string,
         password: string
@@ -11,7 +11,7 @@ export interface SignInRequestAction {
 }
 
 export interface SignUpRequestAction {
-    type: loginActionTypes.SIGNUP_REQUEST,
+    type: LoginActionTypes.SIGNUP_REQUEST,
     payload: {
         email: string,
         password: string
@@ -19,7 +19,7 @@ export interface SignUpRequestAction {
 }
 
 export interface SignInSuccessAction {
-    type: loginActionTypes.LOGIN_SUCCESS,
+    type: LoginActionTypes.LOGIN_SUCCESS,
     payload: {
         email: string,
         token: string
@@ -27,7 +27,7 @@ export interface SignInSuccessAction {
 }
 
 export interface SignUpSuccessAction {
-    type: loginActionTypes.SIGNUP_SUCCESS,
+    type: LoginActionTypes.SIGNUP_SUCCESS,
     payload: {
         email: string,
         token: string
@@ -35,11 +35,11 @@ export interface SignUpSuccessAction {
 }
 
 export interface SignInFailAction {
-    type: loginActionTypes.LOGIN_FAILURE,
+    type: LoginActionTypes.LOGIN_FAILURE,
 }
 
 export interface SignUpFailAction {
-    type: loginActionTypes.SIGNUP_FAILURE,
+    type: LoginActionTypes.SIGNUP_FAILURE,
     payload: {
         errorCode: string,
     }
@@ -47,21 +47,21 @@ export interface SignUpFailAction {
 }
 
 export interface LogoutRequestAction {
-    type: loginActionTypes.LOGOUT_REQUEST,
+    type: LoginActionTypes.LOGOUT_REQUEST,
 }
 
 export interface LogoutFailAction {
-    type: loginActionTypes.LOGOUT_FAILURE,
+    type: LoginActionTypes.LOGOUT_FAILURE,
 }
 
 export interface LogoutSuccessAction {
-    type: loginActionTypes.LOGOUT_SUCCESS,
+    type: LoginActionTypes.LOGOUT_SUCCESS,
 }
 
 export type LogoutActions = LogoutFailAction | LogoutRequestAction | LogoutSuccessAction;
 
 export const signInRequest: ActionCreator<SignInRequestAction> = (email: string, password: string) => ({
-    type: loginActionTypes.LOGIN_REQUEST,
+    type: LoginActionTypes.LOGIN_REQUEST,
     payload: {
         email,
         password,
@@ -69,7 +69,7 @@ export const signInRequest: ActionCreator<SignInRequestAction> = (email: string,
 });
 
 export const signUpRequest: ActionCreator<SignUpRequestAction> = (email: string, password: string) => ({
-    type: loginActionTypes.SIGNUP_REQUEST,
+    type: LoginActionTypes.SIGNUP_REQUEST,
     payload: {
         email,
         password,
@@ -77,7 +77,7 @@ export const signUpRequest: ActionCreator<SignUpRequestAction> = (email: string,
 });
 
 export const signUpSuccess: ActionCreator<SignUpSuccessAction> = (email: string, token: string) => ({
-    type: loginActionTypes.SIGNUP_SUCCESS,
+    type: LoginActionTypes.SIGNUP_SUCCESS,
     payload: {
         email,
         token,
@@ -85,7 +85,7 @@ export const signUpSuccess: ActionCreator<SignUpSuccessAction> = (email: string,
 });
 
 export const signInSuccess: ActionCreator<SignInSuccessAction> = (email: string, token: string) => ({
-    type: loginActionTypes.LOGIN_SUCCESS,
+    type: LoginActionTypes.LOGIN_SUCCESS,
     payload: {
         email,
         token,
@@ -93,24 +93,24 @@ export const signInSuccess: ActionCreator<SignInSuccessAction> = (email: string,
 });
 
 export const signInFail: ActionCreator<SignInFailAction> = () => ({
-    type: loginActionTypes.LOGIN_FAILURE,
+    type: LoginActionTypes.LOGIN_FAILURE,
 });
 
 export const signUpFail: ActionCreator<SignUpFailAction> = (errorCode: string) => ({
-    type: loginActionTypes.SIGNUP_FAILURE,
+    type: LoginActionTypes.SIGNUP_FAILURE,
     payload: {
         errorCode
     }
 });
 
 export const logoutRequest: ActionCreator<LogoutRequestAction> = () => ({
-    type: loginActionTypes.LOGOUT_REQUEST,
+    type: LoginActionTypes.LOGOUT_REQUEST,
 });
 
 export const logoutFail: ActionCreator<LogoutFailAction> = () => ({
-    type: loginActionTypes.LOGOUT_FAILURE,
+    type: LoginActionTypes.LOGOUT_FAILURE,
 });
 
 export const logoutSuccess: ActionCreator<LogoutSuccessAction> = () => ({
-    type: loginActionTypes.LOGOUT_SUCCESS,
+    type: LoginActionTypes.LOGOUT_SUCCESS,
 });

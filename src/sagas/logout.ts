@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 
-import { loginActionTypes } from "ac/constants";
+import { LoginActionTypes } from "ac/constants";
 import { logoutFail, logoutSuccess } from "ac/auth";
 import { showNotification } from "utils/utils";
 import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
@@ -22,7 +22,7 @@ function * logout() {
 }
 
 function* logoutSaga() {
-    yield takeLatest(loginActionTypes.LOGOUT_REQUEST, logout);
+    yield takeLatest(LoginActionTypes.LOGOUT_REQUEST, logout);
 }
 
 export default logoutSaga;

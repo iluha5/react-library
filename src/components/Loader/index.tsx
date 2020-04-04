@@ -13,7 +13,7 @@ interface IState {
     loading: boolean,
 }
 
-class Loader extends React.Component<undefined, IState> {
+class Loader extends React.Component<{}, IState> {
     state = {
         loading: true,
     };

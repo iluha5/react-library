@@ -1,11 +1,11 @@
 export const UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION';
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
 
-export enum notificationsActionTypes {
+export enum NotificationsActionTypes {
     UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION',
     REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION',
 }
-export enum loginActionTypes {
+export enum LoginActionTypes {
     SIGNUP_REQUEST = 'SIGNUP_REQUEST',
     SIGNUP_SUCCESS = 'SIGNUP_SUCCESS',
     SIGNUP_FAILURE = 'SIGNUP_FAILURE',
@@ -26,3 +26,9 @@ export enum loginActionTypes {
     // UPDATE_CURRENT_USER_FAILURE = 'UPDATE_CURRENT_USER_FAILURE',
 }
 
+export enum LoginStatusActionTypes {
+    LOGIN_STATUS_REQUEST = 'LOGIN_STATUS_REQUEST',
+    LOGIN_STATUS_SUCCESS = 'LOGIN_STATUS_SUCCESS',
+    LOGIN_STATUS_FAILURE = 'LOGIN_STATUS_FAILURE',
+
+}
