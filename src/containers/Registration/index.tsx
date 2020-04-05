@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 
-import { SignUpRequestAction, signUpRequest } from 'ac/auth';
+import { ISignUpRequestAction, ISignUpRequestActionOptions, signUpRequest } from 'ac/auth';
 
 import Registration from 'components/Registration';
 import Modal from 'components/Modal';
@@ -23,7 +23,7 @@ interface IStateProps {
     user: IUserState,
 }
 interface IDispatchState {
-    signUpRequest: (email: string, password: string) => SignUpRequestAction,
+    signUpRequest: (options: ISignUpRequestActionOptions) => ISignUpRequestAction,
 }
 
 type Props = IStateProps & IDispatchState & RouteComponentProps;
@@ -116,12 +116,32 @@ class RegistrationContainer extends React.Component<Props, IState> {
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email');
         const password = formData.get('password');
+        const nickname = formData.get('nickname');
+        const name = formData.get('name');
+        const surname = formData.get('surname');
 
         this.setState({
                 errors: [],
             }, () => {
-                if (email && password && typeof email === 'string' && typeof password === 'string') {
-                    signUpRequest(email, password);
+                if (
+                    email
+                    && password
+                    && nickname
+                    && name
+                    && email
+                    && typeof email === 'string'
+                    && typeof name === 'string'
+                    && typeof nickname === 'string'
+                    && typeof surname === 'string'
+                    && typeof password === 'string'
+                ) {
+                    signUpRequest({
+                        email,
+                        password,
+                        nickname,
+                        name,
+                        surname,
+                    });
                 }
             }
         );
@@ -206,7 +226,7 @@ const mapStateToProps = (state: rootState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signUpRequest: (email: string, password: string) => dispatch(signUpRequest(email, password)),
+    signUpRequest: (options: ISignUpRequestActionOptions) => dispatch(signUpRequest(options)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RegistrationContainer));

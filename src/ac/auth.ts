@@ -10,12 +10,16 @@ export interface SignInRequestAction {
     }
 }
 
-export interface SignUpRequestAction {
+export interface ISignUpRequestActionOptions {
+    email: string,
+    password: string,
+    nickname: string,
+    name: string,
+    surname: string
+}
+export interface ISignUpRequestAction {
     type: LoginActionTypes.SIGNUP_REQUEST,
-    payload: {
-        email: string,
-        password: string
-    }
+    payload: ISignUpRequestActionOptions,
 }
 
 export interface SignInSuccessAction {
@@ -68,12 +72,9 @@ export const signInRequest: ActionCreator<SignInRequestAction> = (email: string,
     }
 });
 
-export const signUpRequest: ActionCreator<SignUpRequestAction> = (email: string, password: string) => ({
+export const signUpRequest = (options: ISignUpRequestActionOptions) => ({
     type: LoginActionTypes.SIGNUP_REQUEST,
-    payload: {
-        email,
-        password,
-    }
+    payload: options,
 });
 
 export const signUpSuccess: ActionCreator<SignUpSuccessAction> = (email: string, token: string) => ({

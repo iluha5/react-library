@@ -112,7 +112,6 @@ class Registration extends React.Component<IProps, IState> {
     private _handleNicknameChange = (e: FormEvent<HTMLInputElement>) => {
         const nickname = (e.target as HTMLInputElement).value;
         const { errors } = this.state;
-        console.log('nickname', nickname);
 
         if (!REGEX_NICKNAME.test(nickname)) {
             this.setState({

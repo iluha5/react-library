@@ -2,12 +2,17 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import { config } from '../../env';
-import {showNotification} from 'utils/utils';
-import { NOTIFICATION_ERROR, NOTIFICATION_PASSED } from "utils/constants";
 import UserCredential = firebase.auth.UserCredential;
-import { store } from "store/index";
 
 type IFirebaseConfig = typeof config;
+
+export interface IDBUser {
+    id: string,
+    name: string,
+    surname: string,
+    nickname: string,
+    email: string
+}
 
 class FirebaseService {
     constructor(fbConfig: IFirebaseConfig) {
@@ -15,10 +20,23 @@ class FirebaseService {
         // this.fb = firebase;
     }
 
-    fetchUsers = () => firebase.firestore()
+    fetchUsers = () => firebase
+        .firestore()
         .collection('users')
         .get()
-        .then((snapshot) => console.log('users', snapshot.docs.map(doc => ({...doc, id: doc.id}) )));
+        .then((snapshot) => console.log('users from DB', snapshot.docs.map(doc => ({...doc, id: doc.id}) )));
+
+    addNewUserToDB = (user: IDBUser) => {
+        const { id } = user;
+        const userData = {...user};
+        delete userData.id;
+
+        return firebase
+            .firestore()
+            .collection('users')
+            .doc(id)
+            .set(userData);
+    };
 
     // printUserStatus = () => {
     //     firebase
@@ -37,10 +55,8 @@ class FirebaseService {
             .auth()
             .onAuthStateChanged(user => {
                 if (user) {
-                    console.log('user logged in', user);
                     onUserLoggedIn(user);
                 } else {
-                    console.log('user logged out');
                     onUserNotLoggedIn();
                 }
             })

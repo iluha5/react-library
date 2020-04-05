@@ -2,7 +2,7 @@ import {
     SignInFailAction,
     SignInRequestAction,
     SignInSuccessAction, SignUpFailAction,
-    SignUpRequestAction,
+    ISignUpRequestAction,
     SignUpSuccessAction
 } from "ac/auth";
 import { LoginActionTypes } from "ac/constants";
@@ -32,7 +32,7 @@ export const defaultUserState = {
 export type AuthActions = SignInRequestAction
     | SignInSuccessAction
     | SignInFailAction
-    | SignUpRequestAction
+    | ISignUpRequestAction
     | SignUpSuccessAction
     | SignUpFailAction;
 
