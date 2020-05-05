@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { Reducer } from "redux";
 import {
     ILoginStatusFailureAction,

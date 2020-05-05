@@ -26,7 +26,7 @@ function* signUp(action: ISignUpRequestAction) {
                 email
             });
 
-            yield call(fb.fetchUsers);
+            // yield call(fb.fetchUsers); // not allow now according with new secure rules
 
             yield put(signUpSuccess(user.user.email, user.user.refreshToken));
 

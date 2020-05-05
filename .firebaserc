@@ -1,5 +1,6 @@
 {
   "projects": {
-    "order": "orderbase-e062c"
+    "order": "orderbase-e062c",
+    "default": "orderbase-e062c"
   }
 }

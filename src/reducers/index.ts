@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { Action, combineReducers } from 'redux';
 import notification from './notification';
 import user from './user';
